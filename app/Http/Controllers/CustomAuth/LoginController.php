@@ -64,7 +64,7 @@ class LoginController extends Controller
         $provider = new Fitbit([
             'clientId'          => '22CK9X',
             'clientSecret'      => '50f843929b2b4b6142c2d3007a0e7cd2',
-            'redirectUri'       => 'https://www.epione.oobazee.com/dashboard.html'
+            'redirectUri'       => '/dashboard'
         ]);
 
         // start the session

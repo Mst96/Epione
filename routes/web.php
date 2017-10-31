@@ -12,36 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
-
-Auth::routes();
-
-// Authentication Routes...
-//Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-//Route::post('login', 'Auth\LoginController@login');
-
-//Route::get('login', 'CustomLoginController@index')->name('login')->middleware('login_check');
-Route::get('/login', function(){
-    return view('auth/login');
+Route::get('/dashboard', function () {
+    return view('index');
 });
-
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-
-Route::get('login/{provider}', 'CustomAuth\LoginController@redirectToProvider');
-Route::get('login/{provider}/callback', 'CustomAuth\LoginController@handleProviderCallback');
-Route::get('login/-/fitbit', 'CustomAuth\LoginController@handleRedirectToFitbit');
-
-// Registration Routes...
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
-
-// Password Reset Routes...
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/login', function () {
+    return view('index');
+});
