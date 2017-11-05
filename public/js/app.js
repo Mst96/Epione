@@ -12,9 +12,10 @@ const app = document.getElementById('app');
 ReactDOM.render(
     <Router history = { browserHistory }>
       <Route path = "/" component = { Layout }>
-        <IndexRoute component = { Login }></IndexRoute>
+        <IndexRoute component = { Home }></IndexRoute>
         <Route path = "/login" component = { Login }></Route>
         <Route path = "/dashboard" component = { Dashboard }></Route>
+        <Route path = "/home" component = { Home }></Route>
       </Route>
     </Router>,
     app);

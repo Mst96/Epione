@@ -5,7 +5,7 @@ return(
        <div class="container">
     			<div class="row">
         		<div class="row">
-            	<div class="col-md-8 col-md-offset-1">            
+            	<div class="col-md-8 col-md-offset-1">       
                 <div>
                     <a href="api/login/google" class="btn btn-block btn-lg btn-social btn-google social-button">
                         <span class="fa fa-google"></span> login with Google
