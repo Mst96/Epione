@@ -64,9 +64,8 @@ class LoginController extends Controller
         $provider = new Fitbit([
             'clientId'          => '22CK9X',
             'clientSecret'      => '50f843929b2b4b6142c2d3007a0e7cd2',
-            'redirectUri'       => '/dashboard'
+            'redirectUri'       => 'https://www.epione.oobazee.com/dashboard.html'
         ]);
-
         // start the session
         session_start();
 
@@ -99,6 +98,9 @@ class LoginController extends Controller
                     'code' => $_GET['code']
                 ]);
 
+                $_SESSION['provider'] = $provider;
+                $_SESSION['token'] = $accessToken;
+
                 // We have an access token, which we may use in authenticated
                 // requests against the service provider's API.
                 echo $accessToken->getToken() . "\n";
@@ -117,7 +119,7 @@ class LoginController extends Controller
                 // to Psr\Http\Message\RequestInterface.
                 $request = $provider->getAuthenticatedRequest(
                     Fitbit::METHOD_GET,
-                    Fitbit::BASE_FITBIT_API_URL . '/1/user/-/profile.json',
+                    Fitbit::BASE_FITBIT_API_URL . '/1/user/-/activities/heart/date/2017-11-02/7d.json',
                     $accessToken,
                     ['headers' => [Fitbit::HEADER_ACCEPT_LANG => 'en_US'], [Fitbit::HEADER_ACCEPT_LOCALE => 'en_US']]
                     // Fitbit uses the Accept-Language for setting the unit system used

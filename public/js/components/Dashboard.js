@@ -1,14 +1,17 @@
 import React from 'react';
 import Tile from "../components/includes/Tile";
 import HeartRate from "../components/includes/HeartRate";
+import Fetch from 'react-fetch';
+let profile = require('../../profile-test.json');
+
 export default class Dashboard extends React.Component{
 render(){
+    console.log(profile);
 return(
             <div class="container">
-
     <div class="row">
     
-        <Tile image="https://static0.fitbit.com/images/profile/defaultProfile_100_male.png" name='Profile' line1='name' line2='email@email.com'/>
+        <Tile image="https://static0.fitbit.com/images/profile/defaultProfile_100_male.png" name='Profile' line1={profile.user.displayName} line2={profile.user.age}/>
         
         <HeartRate/>
 
@@ -39,4 +42,20 @@ return(
 </div>
         );
 }
+
+ComponentDidMount() {
+// fetch('https://epione.oobazee.com/profile-test.json')
+// .then(results =>{ 
+//     return results.json();
+// }).then(data =>{
+//     let profile = data.results.map((item)=>{
+//         return(
+//             <div key={item.user.displayName}>
+//             </div>
+//             )
+//     })
+// })
+
+}
+
 }

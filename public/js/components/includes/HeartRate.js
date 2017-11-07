@@ -5,6 +5,7 @@ export default class HeartRate extends React.Component{
         super();
     }
     render(){
+        console.log(this.props.user);
         return(
 
                 <div class="col-sm-5 col-lg-5">
