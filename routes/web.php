@@ -20,3 +20,9 @@ Route::get('/dashboard', function () {
 Route::get('/login', function () {
     return view('index');
 });
+Route::get('/patients', function () {
+    return view('index');
+});
+Route::get('/heartrate', function () {
+    return view('index');
+});

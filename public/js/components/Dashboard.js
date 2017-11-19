@@ -2,6 +2,7 @@ import React from 'react';
 import Tile from "../components/includes/Tile";
 import HeartRate from "../components/includes/HeartRate";
 import Fetch from 'react-fetch';
+import { Link } from "react-router";
 let profile = require('../../profile-test.json');
 
 export default class Dashboard extends React.Component{
@@ -13,7 +14,7 @@ return(
     
         <Tile image="https://static0.fitbit.com/images/profile/defaultProfile_100_male.png" name='Profile' line1={profile.user.displayName} line2={profile.user.age}/>
         
-        <HeartRate/>
+        <Link to={`/heartrate`}><HeartRate/></Link>
 
         <div class="col-sm-4 col-lg-4">
             <div class="col-sm-12 col-lg-12">

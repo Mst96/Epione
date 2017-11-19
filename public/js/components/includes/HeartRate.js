@@ -7,7 +7,6 @@ export default class HeartRate extends React.Component{
     render(){
         console.log(this.props.user);
         return(
-
                 <div class="col-sm-5 col-lg-5">
             <div class="block">
                 <btitle>Heart Rate</btitle>

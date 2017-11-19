@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\CustomAuth;
 
+use App\Http\Controllers\CustomAuth\FirebaseController;
 use Illuminate\Http\Request;
 use djchen\OAuth2\Client\Provider\Fitbit;
 use Socialite;
@@ -82,6 +83,10 @@ class LoginController extends Controller
 
             // Redirect the user to the authorization URL.
             header('Location: ' . $authorizationUrl);
+
+            $firebase = new FirebaseController();
+            $firebase->set("fitbit_token",$_SESSION['oauth2state']);
+
             exit;
 
         // Check given state against previously stored one to mitigate CSRF attack
@@ -93,6 +98,9 @@ class LoginController extends Controller
 
             try {
 
+                $firebase = new FirebaseController();
+
+
                 // Try to get an access token using the authorization code grant.
                 $accessToken = $provider->getAccessToken('authorization_code', [
                     'code' => $_GET['code']
@@ -100,6 +108,8 @@ class LoginController extends Controller
 
                 $_SESSION['provider'] = $provider;
                 $_SESSION['token'] = $accessToken;
+
+                $firebase->set("fitbit_token", $accessToken);
 
                 // We have an access token, which we may use in authenticated
                 // requests against the service provider's API.

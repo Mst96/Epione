@@ -8,6 +8,9 @@
         "php": ">=7.0.0",
         "djchen/oauth2-fitbit": "^1.0",
         "fideloper/proxy": "~3.3",
+        "guzzlehttp/guzzle": "^6.3",
+        "kreait/firebase-php": "^3",
+        "ktamas77/firebase-php": "dev-master",
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0"

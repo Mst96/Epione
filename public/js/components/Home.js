@@ -13,19 +13,19 @@ return(
 			                    <div class="col" align="center">
 			                        <i class="fa fa-user-md fa-4x" aria-hidden="true"></i>
 			                    </div>
-	                        <button type="button" class="btn btn-secondary btn-lg">Doctor</button>
+	                        <a href='/patients'><button type="button" class="btn btn-secondary btn-lg">Doctor</button></a>
 	                    </div>
 	                    <div class="col" align="center">
 			                    <div class="col" align="center">
 			                        <i class="fa fa-user fa-4x" aria-hidden="true"></i>
 			                    </div>
-	                        <button type="button" class="btn btn-secondary btn-lg">Patient</button>
+	                        <a href='/login'><button type="button" class="btn btn-secondary btn-lg">Patient</button></a>
 	                    </div>
 	                    <div class="col" align="center">
 			                    <div class="col" align="center">
 			                        <i class="fa fa-heart fa-4x" aria-hidden="true"></i>
 			                    </div>
-	                        <a href='/login'><button type="button" class="btn btn-secondary btn-lg">Carer</button></a>
+	                        <a href='/patients'><button type="button" class="btn btn-secondary btn-lg">Carer</button></a>
 	                    </div>
 	                </div>
 	            </center>
