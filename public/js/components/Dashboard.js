@@ -12,17 +12,17 @@ return(
             <div class="container">
     <div class="row">
     
-        <Tile image="https://static0.fitbit.com/images/profile/defaultProfile_100_male.png" name='Profile' line1={profile.user.displayName} line2={profile.user.age}/>
+        <Link to={`/heartrate`}><Tile image="https://static0.fitbit.com/images/profile/defaultProfile_100_male.png" name='Profile' line1={profile.user.displayName} line2={profile.user.age}/></Link>
 
-        <Tile image="http://lh5.ggpht.com/0rLLruZKLq5CJpF6J4Rrvet5JpGW6mrGQqeullt5ul3bVRB73r4sDTNiynMx3vHrLQc=w100" name='Pressure' line1={"Blood Pressure:"} line2={profile.user.age}/>
-        <Tile image="https://png.icons8.com/?id=815&size=2x" name='Steps' line1={"Steps:"} line2={profile.user.age}/>
-        <Tile image="http://is3.mzstatic.com/image/thumb/Purple71/v4/82/be/25/82be2555-1152-7172-472b-ddb83420683f/source/100x100bb.jpg" name='Calories' line1={"Calories Burnt:"} line2={profile.user.age}/>
-        <Link to={`/heartrate`}><HeartRate/></Link>
-        <Tile image="https://png.icons8.com/?id=20884&size=2x" name='Goals' line1={"Goals Met:"} line2={profile.user.age}/>
-        <Tile image="https://png.icons8.com/?id=10787&size=2x" name='Sleep' line1={"Total Sleep:"} line2={profile.user.age}/>
-        <Tile image="https://www.southwestphotobooths.co.uk/sites/default/files/styles/extras_square/public/Distance-Travel-Icon_1.png?itok=d4rzJQaP" name='Distance' line1={"Distance Travelled:"} line2={profile.user.age}/>
-        <Tile image="http://meadowbrookglitter.com/wp-content/uploads/Water-Safe-Icon.png" name='Water' line1={"Water Consumption:"} line2={profile.user.age}/>
-        <Tile image="http://blog.cadimage.com/wp-content/uploads/2014/11/Tool_Stairs-2.png" name='Floors' line1={"Total Floors:"} line2={profile.user.age}/>
+        <Link to={`/heartrate`}><Tile image="http://lh5.ggpht.com/0rLLruZKLq5CJpF6J4Rrvet5JpGW6mrGQqeullt5ul3bVRB73r4sDTNiynMx3vHrLQc=w100" name='Pressure' line1={"Blood Pressure:"} line2={profile.user.age}/></Link>
+        <Link to={`/heartrate`}><Tile image="https://png.icons8.com/?id=815&size=2x" name='Steps' line1={"Steps:"} line2={profile.user.age}/></Link>
+        <Link to={`/heartrate`}><Tile image="http://is3.mzstatic.com/image/thumb/Purple71/v4/82/be/25/82be2555-1152-7172-472b-ddb83420683f/source/100x100bb.jpg" name='Calories' line1={"Calories Burnt:"} line2={profile.user.age}/></Link>
+        <Link to={`/heartrate`}><Tile image="https://www.organicfacts.net/wp-content/uploads/Heart-rate.jpg" name='Heart Rate' line1={"Heart rate:"} line2={profile.user.age}/></Link>
+        <Link to={`/heartrate`}><Tile image="https://png.icons8.com/?id=20884&size=2x" name='Goals' line1={"Goals Met:"} line2={profile.user.age}/></Link>
+        <Link to={`/heartrate`}><Tile image="https://png.icons8.com/?id=10787&size=2x" name='Sleep' line1={"Total Sleep:"} line2={profile.user.age}/></Link>
+        <Link to={`/heartrate`}><Tile image="https://www.southwestphotobooths.co.uk/sites/default/files/styles/extras_square/public/Distance-Travel-Icon_1.png?itok=d4rzJQaP" name='Distance' line1={"Distance Travelled:"} line2={profile.user.age}/></Link>
+        <Link to={`/heartrate`}><Tile image="http://meadowbrookglitter.com/wp-content/uploads/Water-Safe-Icon.png" name='Water' line1={"Water Consumption:"} line2={profile.user.age}/></Link>
+        <Link to={`/heartrate`}><Tile image="http://blog.cadimage.com/wp-content/uploads/2014/11/Tool_Stairs-2.png" name='Floors' line1={"Total Floors:"} line2={profile.user.age}/></Link>
 
         <div class="col-sm-3 col-lg-3">
             <div class="col-sm-12 col-lg-15">

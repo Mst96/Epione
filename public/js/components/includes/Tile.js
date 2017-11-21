@@ -11,7 +11,7 @@ export default class Tile extends React.Component{
             const line2 = this.props.line2;
         return(
 
-                <div class="col-sm-3 col-lg-3 col-xs-6">
+                <div class="col-xs-6">
                     <div class="block">
                         <btitle>{tileName}</btitle>
                         <hr/>

@@ -9,7 +9,7 @@ export default class Tile extends React.Component{
             const name = this.props.users.firstName;
             console.log(this.props);
         return(
-                <div class="col-sm-3 col-lg-3 col-xs-6">
+                <div class="col-sm-6 col-lg-4 col-xs-6">
                     <div class="block">
                         <div class="thumbnail">
                             <img src={image} alt="name" class="img-thumbnail"/>
