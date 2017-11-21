@@ -26,3 +26,23 @@ Route::get('/patients', function () {
 Route::get('/heartrate', function () {
     return view('index');
 });
+
+Route::get('/addSymptoms', function () {
+    return view('index');
+});
+
+Route::get('/profile', function () {
+    return view('index');
+});
+
+Route::get('/diary', function () {
+    return view('index');
+});
+
+Route::get('/settings', function () {
+    return view('index');
+});
+
+Route::get('/addsymptom', function () {
+    return view('index');
+});
