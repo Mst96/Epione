@@ -36,3 +36,7 @@ Route::get('/diary', function () {
 Route::get('/login', function () {
     return view('index');
 });
+
+Route::get('/addsymptom', function () {
+    return view('index');
+});
