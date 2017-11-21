@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import Usersettings from "./components/Usersettings";
 import Diary from "./components/Diary";
+import Addsymptom from "./components/Addsymptom";
 
 const app = document.getElementById('app');
 
@@ -22,6 +23,7 @@ ReactDOM.render(
         <Route path = "/profile" component = { Profile }></Route>
         <Route path = "/settings" component = { Usersettings }></Route>
         <Route path = "/diary" component = { Diary }></Route>
+        <Route path = "/addsymptom" component = { Addsymptom }></Route>
 
 
       </Route>
