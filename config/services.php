@@ -38,7 +38,7 @@ return [
     'google' => [
         'client_id' => '919654967122-qavmdsp8vjlpl7p4be26bnuobh9p3se1.apps.googleusercontent.com',
         'client_secret' => 'IVt9qgZwzc4Io7WJUi1PLMsQ',
-        'redirect' => 'https://epione.oobazee.com/dashboard.html',
+        'redirect' => 'https://epione.oobazee.com/dashboard',
     ],
 
 ];

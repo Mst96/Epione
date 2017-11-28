@@ -15,12 +15,16 @@ class LoginRoute
      */
     public function handle($request, Closure $next)
     {
-        $users = array("patient", "carer", "gp");
+        $users_type = array("Client", "Carer", "Doctor");
 
-        foreach ($users as $user){
-            if ($request->user == $user)
-                return $next($request);
-        }
+        // foreach ($users as $user){
+        //     if ($request->user_type == $user)
+        //         return $next($request);
+        // }
+       
+        if (in_array($request->user, $users_type)) {
+            return $next($request);
+        } 
 
         $error_message = 'Please select a user type';
 

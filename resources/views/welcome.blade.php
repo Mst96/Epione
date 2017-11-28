@@ -11,15 +11,38 @@
         <link href="css/animate.css" rel="stylesheet">
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <!--<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">-->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:600" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <!--<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">-->
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         
+        <!--  Bootstrap Icon -->
+        <link href="css/bootstrap-social.css" rel="stylesheet">
+
         <!-- Theme CSS -->
         <link href="css/style.css" rel="stylesheet">
+
+        <!-- JS for SVG -->
+        <script src="js/svg-colour-change.js" rel="stylesheet"></script>
+
+        <!-- Pass ID to Modal -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            $(document).on("click", ".user-type-button", function () {
+                var userType = $(this).data('id');
+                // var baseLink = "{{ route('login.social', 'google', '";
+                // var midLink = baseLink.concat(userType);
+                // var endLink = "')}}";
+                // var link = midLink.concat(endlink);
+                var link = "http://epione.oobazee.com/login/google/";
+                link += userType;
+                console.log(link);
+                $("a#userLink").attr("href", link);
+            });
+        </script>
     </head>
     <body>
         @if (session('error'))
@@ -40,6 +63,10 @@
             <div class="text-vertical-center">
                 <div id="icon-name-">
                     <img src="icon/epione-full-logo.png" alt="Eipone">
+
+                    <!--<img class="svg" src="icon/epione-full-logo.svg" alt="Epione">-->
+
+
                 </div>
                 <!--<h1>Epione</h1>
                 <h3>Delivering a better health monitoring system.</h3>           -->
@@ -55,20 +82,54 @@
                     </div>
                     <div class="w-100"></div>
                     <div class="col" align="center">
-                        <button type="button" class="btn btn-secondary btn-lg">Doctor</button>
+                        <button class="disabled btn btn-outline-success btn-lg user-type-button" data-id="Doctor">Doctor</button>
                     </div>
                     <div class="col" align="center">
-                        <button type="button" class="btn btn-secondary btn-lg">Patient</button>
+                        <button type="button" class="btn btn-outline-primary btn-lg user-type-button" data-id="Client" data-toggle="modal" data-target="#loginModal">Client</button>
                     </div>
                     <div class="col" align="center">
-                        <button type="button" class="btn btn-secondary btn-lg">Carer</button>
+                        <button class="btn btn-outline-danger btn-lg user-type-button" data-id="Carer" data-toggle="modal" data-target="#loginModal">Carer</button>
                     </div>
                 </div>
             </div>
         </header>
 
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Sign in</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!--Google +-->
+                        <!--<a href="" type="button" class="btn btn-gplus">
+                            <i class="fa fa-google-plus left"></i> Google</a>-->
 
+                        <!--<a href="" type="button" class="btn btn-default">
+                            <div class="google-logo float-left">
+                                <div class="g-line"></div>
+                                <div class="red"></div>
+                                <div class="yellow"></div>
+                                <div class="green"></div>
+                                <div class="blue"></div>
+                            </div>
+                            <p class="text-vertical-center">Sign in with Google</p>
+                        </a>-->
 
+                        <a id="userLink" href="" class="btn btn-block btn-social btn-google btn-lg">
+                            <span class="fa fa-google"></span> Sign in with Google
+                        </a>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         
 
         <!-- jQuery first, then Tether, then Bootstrap JS. -->
