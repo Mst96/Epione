@@ -9,20 +9,20 @@ return(
 	                </div>
 	                <div class="row mt-5">
 	                    <div class="w-100"></div>
-	                    <div class="col" align="center">
-			                    <div class="col" align="center">
+	                    <div class="col">
+			                    <div class="col">
 			                        <i class="fa fa-user-md fa-4x" aria-hidden="true"></i>
 			                    </div>
 	                        <a href='/patients'><button type="button" class="btn btn-secondary btn-lg">Doctor</button></a>
 	                    </div>
-	                    <div class="col" align="center">
-			                    <div class="col" align="center">
+	                    <div class="col">
+			                    <div class="col">
 			                        <i class="fa fa-user fa-4x" aria-hidden="true"></i>
 			                    </div>
 	                        <a href='/login'><button type="button" class="btn btn-secondary btn-lg">Patient</button></a>
 	                    </div>
-	                    <div class="col" align="center">
-			                    <div class="col" align="center">
+	                    <div class="col">
+			                    <div class="col">
 			                        <i class="fa fa-heart fa-4x" aria-hidden="true"></i>
 			                    </div>
 	                        <a href='/patients'><button type="button" class="btn btn-secondary btn-lg">Carer</button></a>

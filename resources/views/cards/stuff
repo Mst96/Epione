@@ -1,0 +1,30 @@
+try
+                {
+                    
+                    $user = Socialite::driver('google')->stateless()->user();
+                    $minutes = 3600;//$user->expiresIn;   
+                    return redirect()->route($route_name)->cookie('providerInfo', json_encode($user), $minutes);
+
+                }catch(\GuzzleHttp\Exception\ClientException $ex){
+                    $provider = new Fitbit([
+                        'clientId'          => '22CK9X',
+                        'clientSecret'      => '50f843929b2b4b6142c2d3007a0e7cd2',
+                        'redirectUri'       => 'https://epione.oobazee.com/dashboard'
+                    ]);
+
+                    // Try to get an access token using the authorization code grant.
+                    $accessToken = $provider->getAccessToken('authorization_code', [
+                        'code' => $_GET['code']
+                    ]);
+
+                    $minutes_fitbit = 3600;//86400;
+                    Cookie::queue(Cookie::make('fitbit_token', $accessToken->getToken(), $minutes_fitbit));
+
+                    $this->firebase = new FirebaseController();
+                    $this->firebase->set('fitbit_token', $accessToken->getToken());
+                    $this->firebase->set('fitbit_refresh_token', $accessToken->getRefreshToken());
+                    $this->firebase->set('fitbit_expires', $accessToken->getExpires());
+                    $this->firebase->set('fitbit_has _expired', '$accessToken->hasExpired()');
+
+                    return redirect()->route('dashboard.client');
+                }

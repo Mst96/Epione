@@ -7,7 +7,6 @@ export default class Tile extends React.Component{
     render(){
             const image = this.props.users.avatar;
             const name = this.props.users.firstName;
-            console.log(this.props);
         return(
                 <div class="col-sm-6 col-lg-4 col-xs-6">
                     <div class="block">

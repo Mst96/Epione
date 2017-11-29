@@ -14,9 +14,10 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('login/{provider}', 'CustomAuth\LoginController@redirectToProvider');
+	Route::get('login/{provider}/{user_type?}', 'CustomAuth\LoginController@redirectToProvider')->name('login.social');
 		Route::get('login/{provider}/callback', 'CustomAuth\LoginController@handleProviderCallback');
-		Route::get('login/-/fitbit', 'CustomAuth\LoginController@handleRedirectToFitbit');
+		Route::get('logout', 'CustomAuth\LoginController@logout')->name('logout');
+		Route::get('fitbit/login', 'CustomAuth\LoginController@handleRedirectToFitbit')->name('login.fitbit');
 		Route::get('activities/fitbit/{date?}', 'FitbitController@getActivities')->name('get.activities');
 		Route::get('/login', function(){
   		return view('auth/login');

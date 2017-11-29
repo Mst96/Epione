@@ -57,6 +57,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'login_check' => \App\Http\Middleware\LoginRoute::class,
+        'login.check' => \App\Http\Middleware\LoginRoute::class,
+        'verify.auth' => \App\Http\Middleware\VerifyAuth::class,
+        'verify.fitbitToken' => \App\Http\Middleware\VerifyFitbitToken::class,
     ];
 }
