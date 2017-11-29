@@ -10,9 +10,13 @@ export default class Dashboard extends React.Component{
 render(){
 return(
             <div class="container">
-            {users.map(function(user, index){
-                    return <Link to={`/dashboard`}><User users={user} key={index}/></Link>
-                  })}
+                    {users.map(function(user, index){
+                        if(Math.floor((Math.random() * 2))){
+                                    return <Link to={`/dashboard`}><User users={user} key={index}/></Link>
+                          }
+                        }
+                        )}
+        	            }
             </div>
         );
 }
