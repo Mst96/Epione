@@ -46,6 +46,9 @@ Route::get('/heartrate', function () {
 		Route::get('/addsymptom', function () {
 		    return view('index');
 		});
+		Route::get('/steps', function () {
+		    return view('index');
+		});
 
 Route::group(['middleware' => ['verify.auth']], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
