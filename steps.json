@@ -1,0 +1,192 @@
+{
+	"step-counter": {
+		"dataset": [
+			{
+				"day": "01",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 3119
+			},
+			{
+				"day": "02",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 2753
+			},
+			{
+				"day": "03",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 7677
+			},
+			{
+				"day": "04",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 9168
+			},
+			{
+				"day": "05",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 9174
+			},
+			{
+				"day": "06",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 4544
+			},
+			{
+				"day": "07",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 9898
+			},
+			{
+				"day": "08",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 18189
+			},
+			{
+				"day": "09",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 5123
+			},
+			{
+				"day": "10",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 10021
+			},
+			{
+				"day": "11",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 8336
+			},
+			{
+				"day": "12",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 10301
+			},
+			{
+				"day": "13",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 7242
+			},
+			{
+				"day": "14",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 7856
+			},
+			{
+				"day": "15",
+				"month": "Oct",
+				"year": 2017,
+				"steps": 6001
+			},
+			{
+				"day": "16",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 6216
+			},
+			{
+				"day": "17",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 12759
+			},
+			{
+				"day": "18",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 16182
+			},
+			{
+				"day": "19",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 8308
+			},
+			{
+				"day": "20",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 9978
+			},
+			{
+				"day": "21",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 6723
+			},
+			{
+				"day": "22",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 3207
+			},
+			{
+				"day": "23",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 15267
+			},
+			{
+				"day": "24",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 13644
+			},
+			{
+				"day": "25",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 11426
+			},
+			{
+				"day": "26",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 14640
+			},
+			{
+				"day": "27",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 11392
+			},
+			{
+				"day": "28",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 3132
+			},
+			{
+				"day": "29",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 8045
+			},
+			{
+				"day": "30",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 9325
+			},
+			{
+				"day": "31",
+				"month": "Oct",
+				"year": "2017",
+				"steps": 7906
+			}
+		]
+	}
+}
