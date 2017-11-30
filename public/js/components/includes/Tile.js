@@ -9,9 +9,11 @@ export default class Tile extends React.Component{
             const tileName = this.props.name;
             const line1 = this.props.line1;
             const line2 = this.props.line2;
+            const linkTo = this.props.linkTo;
         return(
 
                 <div class="col-xs-6">
+                <Link to={linkTo}>
                     <div class="block">
                         <btitle>{tileName}</btitle>
                         <hr/>
@@ -21,6 +23,7 @@ export default class Tile extends React.Component{
                         <p>{line1}</p>
                         <p>{line2}</p>
                     </div>
+                    </Link>
                 </div>
         );
     }
