@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 // import { Chart } from 'react-google-charts';
 import {LineChart} from 'react-easy-chart';
 // import RTChart from 'react-rt-chart';
-let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
+let data = require('../../../bloodpressure.json')["data"];
 
  
 export default class HeartRatePage extends React.Component {
@@ -12,13 +12,19 @@ export default class HeartRatePage extends React.Component {
     this.state = {data: []};
   }
   componentDidMount() {
-    setInterval(() => {
+    var rate;
     var array = [];
-    for (var i = 0; i <= this.state.data.length && i<data.length; i++) {
-      array.push({"x": i,"y": data[i].value});
+    for (var i = 0; i <= 5; i++) {
+      rate = Math.floor((Math.random() * 30) + 90);
+      array.push({"x": i, "y": rate});
     };
     this.setState({ data: array });
-  }, 1000);
+    var i = 5;
+    setInterval(() => {
+      array.push({"x": data[i].x, "y": data[i].y})
+      this.setState({ data: array });
+      i++;
+  }, 3000);
   }
   render() {
     var stuff = this.state.data;
@@ -26,6 +32,7 @@ export default class HeartRatePage extends React.Component {
     return (
       <div>
       <LineChart
+      yDomainRange={[0, 200]}
       axes
       width={250}
       height={250}

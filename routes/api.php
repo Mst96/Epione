@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => ['web']], function () {
+	Route::get('notify', 'FirebaseMessagingController@send')->name('sendNotification');
 	Route::get('login/{provider}/{user_type?}', 'CustomAuth\LoginController@redirectToProvider')->name('login.social');
 		Route::get('login/{provider}/callback', 'CustomAuth\LoginController@handleProviderCallback');
 		Route::get('logout', 'CustomAuth\LoginController@logout')->name('logout');

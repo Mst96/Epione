@@ -2,8 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 // import { Chart } from 'react-google-charts';
 import {LineChart} from 'react-easy-chart';
+import axios from 'axios';
 // import RTChart from 'react-rt-chart';
-let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
+// let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
+let data = require('../../../heartrate.json')["data"];
 
 const mapStateToProps = function(state){
   console.log(state);
@@ -29,14 +31,18 @@ export default class HeartRatePage extends React.Component {
   componentDidMount() {
     var rate;
     var array = [];
+    var d = new Date();
     for (var i = 0; i <= 5; i++) {
-      rate = Math.floor((Math.random() * 46) + 55);
-      array.push({"x": i, "y": rate});
+      var h = this.addZero(d.getUTCHours());
+      var m = this.addZero(d.getUTCMinutes() + i);
+      rate = Math.floor((Math.random() * 20) + 55);
+      array.push({"x": h + ":" + m, "y": rate});
     };
     this.setState({ data: array });
+    var i = 5;
     setInterval(() => {
-      var newrate = Math.floor((Math.random() * 46) + 55);
-      array.push({"x": i, "y": newrate});
+      array.push({"x": data[i].x, "y": data[i].y})
+      if(data[i].y > 120) this.notify();
       this.setState({ data: array });
       i++;
   }, 3000);
@@ -45,13 +51,30 @@ export default class HeartRatePage extends React.Component {
     return (
       <div>
       <LineChart
+      xType={'text'}
+      yDomainRange={[0, 120]}
       axes
-      width={500}
+      dataPoints
+      width={750}
       height={500}
+      grid
       axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
     data={[this.state.data]}/>
             </div>
     );
+  }
+  addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+  }
+
+  notify(){
+    axios.get('/api/notify')
+    .then(success =>{
+        console.log("notified");
+        });
   }
 
 }

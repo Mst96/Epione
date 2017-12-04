@@ -5,11 +5,12 @@ import Fetch from 'react-fetch';
 import { Link } from "react-router";
 let profile = require('../../profile-test.json');
 let users = require('../../../users.json');
+let data = require('../../../heartrate.json')["data"];
 
 export default class Dashboard extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {user: {}};
+        this.state = {user: {}, heartrate: 60};
     }
     componentDidMount() {
         console.log(this.props);
@@ -21,9 +22,13 @@ export default class Dashboard extends React.Component{
             }
         })
         this.setState({user: user[0]});
+        var i = 0;
+        setInterval(() => {
+          this.setState({ heartrate: data[i].y });
+          i++;
+        }, 2000);
     }
 render(){
-    console.log(this.state.user);
 return(
     <div class="container">
         <div class="row">
@@ -33,7 +38,7 @@ return(
             <Tile linkTo={"/bloodpressure"} image="http://lh5.ggpht.com/0rLLruZKLq5CJpF6J4Rrvet5JpGW6mrGQqeullt5ul3bVRB73r4sDTNiynMx3vHrLQc=w100" name='Pressure' line1={"Blood Pressure:"} line2={this.state.user.age}/>
             <Tile linkTo={"/steps"} image="https://png.icons8.com/?id=815&size=2x" name='Steps' line1={"Steps:"} line2={this.state.user.age}/>
             <Tile linkTo={"/heartrate"} image="http://is3.mzstatic.com/image/thumb/Purple71/v4/82/be/25/82be2555-1152-7172-472b-ddb83420683f/source/100x100bb.jpg" name='Calories' line1={"Calories Burnt:"} line2={this.state.user.age}/>
-            <Tile linkTo={"/heartrate"} image="https://png.icons8.com/?id=46599&size=2x" name='Heart Rate' line1={"Heart rate:"} line2={this.props.heartrate}/>
+            <Tile linkTo={"/heartrate"} image="https://png.icons8.com/?id=46599&size=2x" name='Heart Rate' line1={"Heart rate:"} line2={this.state.heartrate}/>
             <Tile linkTo={"/heartrate"} image="https://png.icons8.com/?id=20884&size=2x" name='Goals' line1={"Goals Met:"} line2={this.state.user.age}/>
             <Tile linkTo={"/heartrate"} image="https://png.icons8.com/?id=10787&size=2x" name='Sleep' line1={"Total Sleep:"} line2={this.state.user.age}/>
             <Tile linkTo={"/heartrate"} image="https://www.southwestphotobooths.co.uk/sites/default/files/styles/extras_square/public/Distance-Travel-Icon_1.png?itok=d4rzJQaP" name='Distance' line1={"Distance Travelled:"} line2={this.state.user.age}/>
