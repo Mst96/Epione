@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('index');
 });
-Route::get('/{user}/dashboard', function () {
+Route::get('/dashboard/{user}', function () {
     	return view('index');
 		});
 Route::get('/patients', function () {
@@ -31,7 +31,7 @@ Route::get('/heartrate', function () {
 		    return view('index');
 		});
 
-		Route::get('/profile', function () {
+		Route::get('/profile/{user}', function () {
 		    return view('index');
 		});
 
@@ -47,6 +47,9 @@ Route::get('/heartrate', function () {
 		    return view('index');
 		});
 		Route::get('/steps', function () {
+		    return view('index');
+		});
+		Route::get('/bloodpressure', function () {
 		    return view('index');
 		});
 

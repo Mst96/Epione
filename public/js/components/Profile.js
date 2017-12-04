@@ -4,19 +4,33 @@ import HeartRate from "../components/includes/HeartRate";
 import Allergies from "../components/includes/Allergies";
 import Symptoms from "../components/includes/Symptoms";
 import Fetch from 'react-fetch';
-let profile = require('../../profile-test.json');
+let users = require('../../../users.json');
 
 export default class Dashboard extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {user: {}};
+    }
+    componentDidMount() {
+        console.log(this.props);
+        var param = this.props.params.user;
+        var user = users.filter(function(user){
+            if(user.firstName === param){
+                console.log("YOOO MATCH");
+                return user;
+            }
+        })
+        this.setState({user: user[0]});
+    }
 render(){
-    console.log(profile);
 return(
             <div class="container">
     <div class="row">
     
-        <Tile image="https://static0.fitbit.com/images/profile/defaultProfile_100_male.png" name='Name' line1={profile.user.displayName} line2={profile.user.age}/>
-        <Tile image="http://mgla.asn.au/wp-content/uploads/2017/06/icon-age.png" name='age' line1={"Age:"} line2={profile.user.age}/>
-        <Tile image="https://png.icons8.com/?id=19420&size=2x" name='Height' line1={"Current Height:"} line2={profile.user.age}/>
-        <Tile image="https://png.icons8.com/?id=37167&size=2x" name='Weight' line1={"Current Weight:"} line2={profile.user.age}/>
+        <Tile image="https://static0.fitbit.com/images/profile/defaultProfile_100_male.png" name='Name' line1={this.state.user.firstName} line2={this.state.user.age}/>
+        <Tile image="http://mgla.asn.au/wp-content/uploads/2017/06/icon-age.png" name='age' line1={"Age:"} line2={this.state.user.age}/>
+        <Tile image="https://png.icons8.com/?id=19420&size=2x" name='Height' line1={"Current Height:"} line2={this.state.user.age}/>
+        <Tile image="https://png.icons8.com/?id=37167&size=2x" name='Weight' line1={"Current Weight:"} line2={this.state.user.age}/>
     
         <Allergies/>
         <Symptoms/>

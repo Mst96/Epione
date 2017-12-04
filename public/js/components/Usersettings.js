@@ -5,6 +5,7 @@ import Allergies from "../components/includes/Allergies";
 import Symptoms from "../components/includes/Symptoms";
 import Fetch from 'react-fetch';
 let profile = require('../../profile-test.json');
+let users = require('../../../users.json');
 
 export default class Usersettings extends React.Component{
 render(){

@@ -10,7 +10,7 @@ return(
         <div class="container">
         {users.map(function(user, index){
         	if(Math.floor((Math.random() * 2))){
-        		return <Link to={"/"+user["firstName"]+"/dashboard"}><User users={user} key={index}/></Link>
+        		return <Link to={"/dashboard/"+user["firstName"]}><User users={user} key={index}/></Link>
               }
             }
               )}
