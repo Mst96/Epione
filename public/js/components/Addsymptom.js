@@ -1,5 +1,6 @@
 import React from 'react';
 import Tile from "../components/includes/Tile";
+import { Link } from "react-router";
 
 import Fetch from 'react-fetch';
 let profile = require('../../profile-test.json');
@@ -468,7 +469,7 @@ return(
             <div class="mt-2 col-sm-12 col-lg-4">
                 <div class="block">
                 <center>
-                    <btitle>Back to Dashboard</btitle>
+                    <Link to={'/Patient/dashboard'}>  <btitle>Back to Dashboard</btitle></Link>
                     </center>
                     <hr/>
                     <div class="text-center">
@@ -485,6 +486,7 @@ return(
  
         );
 }
+
 
 ComponentDidMount() {
 // fetch('https://epione.oobazee.com/profile-test.json')

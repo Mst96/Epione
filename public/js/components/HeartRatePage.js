@@ -7,22 +7,7 @@ import axios from 'axios';
 // let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
 let data = require('../../../heartrate.json')["data"];
 
-const mapStateToProps = function(state){
-  console.log(state);
-  return {
-    heartrate: check(state.background.random.value),
-  }
-}
-
-const check = function(value){
-  if (values === null){
-    return [60]
-  } else {
-    return value.values
-  }
-}
-const mapDispatchToProps = function (dispatch) {
-}
+ 
 export default class HeartRatePage extends React.Component {
   constructor(props) {
     super(props);
@@ -54,6 +39,7 @@ export default class HeartRatePage extends React.Component {
   }, 3000);
   }
   render() {
+    var stuff = this.state.data;
     return (
       <div>
       <LineChart

@@ -9,7 +9,7 @@ let data = require('../../../bloodpressure.json')["data"];
 export default class HeartRatePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {data: []};
+    this.state = {data: [], current: 0};
   }
   componentDidMount() {
     var rate;
@@ -28,14 +28,13 @@ export default class HeartRatePage extends React.Component {
   }
   render() {
     var stuff = this.state.data;
-    console.log(this.state.data);
     return (
       <div>
       <LineChart
       yDomainRange={[0, 200]}
       axes
-      width={250}
-      height={250}
+      width={500}
+      height={500}
       axisLabels={{x: 'Reading', y: 'Blood Pressure'}}
     data={[this.state.data]}/>
             </div>
