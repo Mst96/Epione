@@ -74,6 +74,24 @@ Route::get('/heartrate', function () {
 		Route::get('/floors', function () {
 		    return view('index');
 		});
+		Route::get('/vitals', function () {
+		    return view('index');
+		});
+		Route::get('/body', function () {
+		    return view('index');
+		});
+		Route::get('/symptom', function () {
+		    return view('index');
+		});
+		Route::get('/activity', function () {
+		    return view('index');
+		});
+		Route::get('/activityPage', function () {
+		    return view('index');
+		});
+		Route::get('/epionegraph', function () {
+		    return view('index');
+		});
 
 Route::group(['middleware' => ['verify.auth']], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

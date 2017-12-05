@@ -19,6 +19,12 @@ import SleepPage from "./components/SleepPage";
 import DistancePage from "./components/DistancePage";
 import WaterPage from "./components/WaterPage";
 import FloorsPage from "./components/FloorsPage";
+import Vitals from "./components/Vitals";
+import Body from "./components/Body";
+import Symptom from "./components/Symptom";
+import Activity from "./components/Activity";
+import ActivityPage from "./components/ActivityPage";
+import EpioneGraph from "./components/EpioneGraph";
 
 const app = document.getElementById('app');
 
@@ -43,6 +49,12 @@ ReactDOM.render(
         <Route path = "/distance" component = { DistancePage }></Route>
         <Route path = "/water" component = { WaterPage }></Route>
         <Route path = "/floors" component = { FloorsPage }></Route>
+        <Route path = "/vitals" component = { Vitals }></Route>
+        <Route path = "/body" component = { Body }></Route>
+        <Route path = "/symptom" component = { Symptom }></Route>
+        <Route path = "/activity" component = { Activity }></Route>
+        <Route path = "/activitypage" component = { ActivityPage }></Route>
+        <Route path = "/epionegraph" component = { EpioneGraph }></Route>
       </Route>
     </Router>,
     app);
