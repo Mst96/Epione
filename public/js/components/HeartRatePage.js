@@ -41,6 +41,12 @@ export default class HeartRatePage extends React.Component {
     this.setState({ data: array });
     var i = 5;
     setInterval(() => {
+      if(i > 15){
+        console.log("yo");
+        console.log(array.length);
+        array.shift();
+        console.log(array.length);
+      }
       array.push({"x": data[i].x, "y": data[i].y})
       if(data[i].y > 120) this.notify();
       this.setState({ data: array });
@@ -64,6 +70,9 @@ export default class HeartRatePage extends React.Component {
     );
   }
   addZero(i) {
+    if(i >= 60){
+      i = i % 60;
+    }
     if (i < 10) {
         i = "0" + i;
     }

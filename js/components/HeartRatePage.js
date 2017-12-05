@@ -15,6 +15,13 @@ export default class HeartRatePage extends React.Component {
     setInterval(() => {
     var array = [];
     for (var i = 0; i <= this.state.data.length && i<data.length; i++) {
+      console.log(i);
+      if(i >= 15){
+        console.log("yo");
+        console.log(array.length);
+        array.shift();
+        console.log(array.length);
+      }
       array.push({"x": i,"y": data[i].value});
     };
     this.setState({ data: array });
