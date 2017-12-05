@@ -6,15 +6,37 @@ body {
     height: 100%;    
 }
 
+p {
+
+  color: rgb(0,0,0);
+}
+
+h1 {
+    color: rgb(0,0,0);
+}
+
+ul.a {
+    list-style-type: circle;
+    color: rgb(0,0,0);
+}
+
 body {
     font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
+    color: rgb(0,0,0);
 }
 
 .text-vertical-center {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+    color: rgb(0,0,0);
+}
+
+.line1 {
+ 
+ color: rgb(0,0,0);
+
 }
 
 .text-vertical-center h1 {
@@ -22,6 +44,7 @@ body {
     padding: 0;
     font-size: 4.5em;
     font-weight: 700;
+    color: rgb(0,0,0);
 }
 
 /* Block */
@@ -32,12 +55,15 @@ body {
     border-radius: 10px; /* future proofing */
     -khtml-border-radius: 10px; /* for old Konqueror browsers */
     padding: 10px;
+    margin: 10px;
+    color: rgb(0,0,0);
 }
 
 .block btitle{
     padding: 15px;
     font-size:25px;
 	text-transform:uppercase;	
+  color: rgb(0,0,0);
 }
 
 .block hr{
@@ -45,6 +71,7 @@ body {
   	border-top: 1px solid #151515;
   	border-top-style: dashed;
 	margin-top:3px;
+  color: rgb(0,0,0);
 }
 
 .block .thumbnail{

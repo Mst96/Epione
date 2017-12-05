@@ -34,7 +34,7 @@ export default class HeartRatePage extends React.Component {
       axes
       width={500}
       height={500}
-      axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+      axisLabels={{x: 'Reading', y: 'Floors Walked'}}
     data={[this.state.data]}/>
             </div>
     );

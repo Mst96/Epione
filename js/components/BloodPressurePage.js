@@ -9,32 +9,27 @@ let data = require('../../../test.json')["activities-heart-intraday"]["dataset"]
 export default class HeartRatePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {data: [], current: 0};
+    this.state = {data: []};
   }
   componentDidMount() {
-    var rate;
+    setInterval(() => {
     var array = [];
-    for (var i = 0; i <= 5; i++) {
-      rate = Math.floor((Math.random() * 46) + 55);
-      array.push({"x": i, "y": rate});
+    for (var i = 0; i <= this.state.data.length && i<data.length; i++) {
+      array.push({"x": i,"y": data[i].value});
     };
     this.setState({ data: array });
-    setInterval(() => {
-    var newrate = Math.floor((Math.random() * 46) + 55);
-    array.push({"x": i, "y": newrate});
-    this.setState({ data: array });
-    i++;
-  }, 3000);
+  }, 1000);
   }
   render() {
     var stuff = this.state.data;
+    console.log(this.state.data);
     return (
       <div>
       <LineChart
       axes
-      width={500}
-      height={500}
-      axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+      width={250}
+      height={250}
+      axisLabels={{x: 'Reading', y: 'Blood Pressure'}}
     data={[this.state.data]}/>
             </div>
     );
