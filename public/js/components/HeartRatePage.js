@@ -14,6 +14,7 @@ export default class HeartRatePage extends React.Component {
     this.state = {data: [], current: 0};
   }
   componentDidMount() {
+    this.notify();
     var rate;
     var array = [];
     var d = new Date();
@@ -66,7 +67,7 @@ export default class HeartRatePage extends React.Component {
   }
 
   notify(){
-    axios.get('/api/notify')
+    axios.get('/api/notify', {message: "High Heart Rate"})
     .then(success =>{
         console.log("notified");
         });
