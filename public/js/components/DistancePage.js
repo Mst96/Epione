@@ -9,8 +9,15 @@ let data = require('../../../test.json')["activities-heart-intraday"]["dataset"]
 export default class HeartRatePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {data: [], current: 0};
+    this.state = {
+      data: [], 
+      componentWidth: 300,
+      current: 0
+    };
+
+    this.handleResize = this.handleResize.bind(this);
   }
+
   componentDidMount() {
     var rate;
     var array = [];
@@ -25,18 +32,37 @@ export default class HeartRatePage extends React.Component {
     this.setState({ data: array });
     i++;
   }, 3000);
+
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
   }
+
+  handleResize() {
+    this.setState({
+      windowWidth: window.innerWidth - 100,
+      componentWidth: this.myInput.offsetWidth
+    });
+  }
+
   render() {
     var stuff = this.state.data;
     return (
-      <div>
-      <LineChart
-      axes
-      width={500}
-      height={500}
-      axisLabels={{x: 'Reading', y: 'Distance Travelled'}}
-    data={[this.state.data]}/>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-lg-15" ref="block" >
+            <div class="block" ref={input => {this.myInput = input}}>
+              <btitle>Distance</btitle>
+              <LineChart
+                axes
+                width={this.state.componentWidth}
+                height={(this.state.componentWidth / 3)}
+                axisLabels={{x: 'Reading', y: 'Distance Travelled'}}
+                data={[this.state.data]}
+              />
             </div>
+          </div>
+        </div>
+      </div> 
     );
   }
 

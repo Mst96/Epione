@@ -310,7 +310,6 @@ export default class ActivityPage extends React.Component{
 		this.onClickYear = this.onClickYear.bind(this);
 		this.onClickMonth = this.onClickMonth.bind(this);
 
-
 		this.state = {
 			componentWidth: 300,
 			selectedYearIndex: 3,
@@ -319,6 +318,12 @@ export default class ActivityPage extends React.Component{
 			jan2015: array12, feb2015: array13, mar2015: array14, apr2015: array15, may2015: array16, jun2015: array17, jul2015: array46, aug2015: array18, sep2015: array19, oct2015: array20, nov2015: array21, dec2015: array22,
 			jan2016: array23, feb2016: array24, mar2016: array25, apr2016: array26, may2016: array27, jun2016: array28, jul2016: array47, aug2016: array29, sep2016: array30, oct2016: array31, nov2016: array32, dec2016: array33,
 			jan2017: array34, feb2017: array35, mar2017: array36, apr2017: array37, may2017: array38, jun2017: array39, jul2017: array48, aug2017: array40, sep2017: array41, oct2017: array42, nov2017: array43, dec2017: array44,
+		/*
+			avgjan2014: sum / array.length, avgfeb2014: sum / array2.length, avgmar2014: sum / array3.length, avgapr2014: sum / array4.length, avgmay2014: sum / array5.length, avgjun2014: sum / array6.length, avgjul2014: sum / array45.length, avgaug2014: sum / array7.length, avgsep2014: sum / array8.length, avgoct2014: sum / array9.length, avgnov2014: sum / array10.length, avgdec2014: sum / array11,
+			avgjan2015: sum / array12.length, avgfeb2015: sum / array13.length, avgmar2015: sum / array14.length, avgapr2015: sum / array15.length, avgmay2015: sum / array16.length, avgjun2015: sum / array17.length, avgjul2015: sum / array46.length, avgaug2015: sum / array18.length, avgsep2015: sum / array19.length, avgoct2015: sum / array20.length, avgnov2015: sum / array21.length, avgdec2015: sum / array22,
+			avgjan2016: sum / array23.length, avgfeb2016: sum / array24.length, avgmar2016: sum / array25.length, avgapr2016: sum / array26.length, avgmay2016: sum / array27.length, avgjun2016: sum / array28.length, avgjul2016: sum / array47.length, avgaug2016: sum / array29.length, avgsep2016: sum / array30.length, avgoct2016: sum / array31.length, avgnov2016: sum / array32.length, avgdec2016: sum / array33,
+			avgjan2017: sum / array34.length, avgfeb2017: sum / array35.length, avgmar2017: sum / array36.length, avgapr2017: sum / array37.length, avgmay2017: sum / array38.length, avgjun2017: sum / array39.length, avgjul2017: sum / array48.length, avgaug2017: sum / array40.length, avgsep2017: sum / array41.length, avgoct2017: sum / array42.length, avgnov2017: sum / array43.length, avgdec2017: sum / array44
+		*/
 		};
 
 		
