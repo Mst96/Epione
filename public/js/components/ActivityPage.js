@@ -305,9 +305,16 @@ export default class ActivityPage extends React.Component{
 		};
 
 		this.handleResize = this.handleResize.bind(this);
+		this.onChange = this.onChange.bind(this);
+		this.onActive = this.onActive.bind(this);
+		this.onClickYear = this.onClickYear.bind(this);
+		this.onClickMonth = this.onClickMonth.bind(this);
+
 
 		this.state = {
 			componentWidth: 300,
+			selectedYearIndex: 3,
+			selectedMonthIndex: 11,
 			jan2014: array, feb2014: array2, mar2014: array3, apr2014: array4, may2014: array5, jun2014: array6, jul2014: array45, aug2014: array7, sep2014: array8, oct2014: array9, nov2014: array10, dec2014: array11,
 			jan2015: array12, feb2015: array13, mar2015: array14, apr2015: array15, may2015: array16, jun2015: array17, jul2015: array46, aug2015: array18, sep2015: array19, oct2015: array20, nov2015: array21, dec2015: array22,
 			jan2016: array23, feb2016: array24, mar2016: array25, apr2016: array26, may2016: array27, jun2016: array28, jul2016: array47, aug2016: array29, sep2016: array30, oct2016: array31, nov2016: array32, dec2016: array33,
@@ -341,6 +348,16 @@ export default class ActivityPage extends React.Component{
 		});
 	}
 
+	onClickYear(ev) {
+		let newVal = + !this.state.selectedYearIndex;
+		this.setState({selectedYearIndex: newVal});
+	}
+
+	onClickMonth(ev) {
+		let newVal = + !this.state.selectedMonthIndex;
+		this.setState({selectedMonthIndex: newVal});
+	}
+
 	render(){
 		return(
 			<div class="container">
@@ -349,7 +366,7 @@ export default class ActivityPage extends React.Component{
 						<div class="block" ref={input => {this.myInput = input}}>
 							<btitle>Pedometer</btitle>
 							<link href="//cdn.muicss.com/mui-0.9.30/css/mui.min.css" rel="stylesheet" type="text/css" media="screen" />
-							<Tabs justified={true}>
+							<Tabs justified={true} onChange={this.onChange} selectedIndex={this.state.selectedYearIndex}>
 								<Tab value="2014" label="2014">
 									<Tabs justified={true}>
 										<Tab value="Jan" label="Jan">
@@ -670,7 +687,7 @@ export default class ActivityPage extends React.Component{
 										</Tab>
 									</Tabs>
 								</Tab>
-								<Tab value="2016" label="2016">
+								<Tab value="2016" label="2016" onActive={this.onActive}>
 									<Tabs justified={true}>
 										<Tab value="Jan" label="Jan">
 											<BarChart
@@ -831,7 +848,7 @@ export default class ActivityPage extends React.Component{
 									</Tabs>
 								</Tab>
 								<Tab value="2017" label="2017">
-									<Tabs justified={true}>
+									<Tabs justified={true} selectedIndex={this.state.selectedMonthIndex}>
 										<Tab value="Jan" label="Jan">
 											<BarChart
 												axes

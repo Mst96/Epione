@@ -12,6 +12,7 @@ import Profile from "./components/Profile";
 import Usersettings from "./components/Usersettings";
 import Diary from "./components/Diary";
 import Addsymptom from "./components/Addsymptom";
+import ActivityPage from "./components/ActivityPage";
 
 const app = document.getElementById('app');
 
@@ -28,6 +29,7 @@ ReactDOM.render(
         <Route path = "/settings" component = { Usersettings }></Route>
         <Route path = "/diary" component = { Diary }></Route>
         <Route path = "/addsymptom" component = { Addsymptom }></Route>
+        <Route path = "/steps" component = { ActivityPage }></Route>
       </Route>
     </Router>,
     app);
