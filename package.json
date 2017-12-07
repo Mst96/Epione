@@ -38,6 +38,7 @@
         "history": "^4.4.0",
         "react": "^15.0.2",
         "react-addons-css-transition-group": "^15.4.2",
+        "react-datepicker": "^0.61.0",
         "react-dom": "^15.3.2",
         "react-easy-chart": "^0.3.0",
         "react-faux-dom": "^2.7.1",
