@@ -6,7 +6,7 @@ let profile = require('../../profile-test.json');
 import TodoItems from './includes/TodoItems';
 
 
-export default class Symptom extends React.Component {
+export default class Notes extends React.Component {
     constructor(props, context) {
         super(props, context);
        
@@ -58,7 +58,7 @@ export default class Symptom extends React.Component {
 
           <div class="col-sm-3 col-lg-6">
           <div class="block">
-              <btitle>Symptoms</btitle>
+              <btitle>Notes</btitle>
               <hr/>
 
 
@@ -68,9 +68,9 @@ export default class Symptom extends React.Component {
               <div className="header">
                 <form onSubmit={this.addItem}>
                   <input ref={(a) => this._inputElement = a} 
-                          placeholder="Enter Symptom">
+                          placeholder="Add note">
                   </input>
-                  <button type="submit">add</button>
+                  <button type="submit">Add</button>
                 </form>
               </div>
 
