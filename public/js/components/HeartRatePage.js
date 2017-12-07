@@ -14,7 +14,6 @@ export default class HeartRatePage extends React.Component {
     this.state = {data: [], current: 0};
   }
   componentDidMount() {
-    this.notify();
     var rate;
     var array = [];
     var d = new Date();
@@ -24,18 +23,11 @@ export default class HeartRatePage extends React.Component {
       rate = Math.floor((Math.random() * 20) + 55);
       array.push({"x": h + ":" + m, "y": rate});
     };
-    this.setState({ data: array });
+     this.setState({ data: array });
     var i = 5;
     setInterval(() => {
-      if(i > 15){
-        console.log("yo");
-        console.log(array.length);
-        array.shift();
-        console.log(array.length);
-      }
       array.push({"x": data[i].x, "y": data[i].y})
-      if(data[i].y > 120) this.notify();
-      this.setState({ data: array });
+      this.setState({ data: array, current : data[i].y});
       i++;
   }, 3000);
   }
@@ -43,6 +35,7 @@ export default class HeartRatePage extends React.Component {
     var stuff = this.state.data;
     return (
       <div>
+      <h1>Current Blood Pressure: {this.state.current}</h1>;
       <LineChart
       xType={'text'}
       yDomainRange={[0, 120]}
@@ -67,9 +60,9 @@ export default class HeartRatePage extends React.Component {
   }
 
   notify(){
-    axios.post('/api/notify', {message: "High Heart Rate"})
+    axios.get('/api/notify')
     .then(success =>{
-        console.log(success);
+        console.log("notified");
         });
   }
 

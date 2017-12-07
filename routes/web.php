@@ -23,77 +23,79 @@ Route::get('/{user}/dashboard', function () {
 Route::get('/patients', function () {
     	return view('index');
 		});
-Route::get('/{user}/heartrate', function () {
+Route::get('/heartrate', function () {
 		  return view('index');
 		});
 
-		Route::get('/{user}/addSymptoms', function () {
+		Route::get('/addSymptoms', function () {
 		    return view('index');
 		});
 
-		Route::get('/{user}/profile', function () {
+		Route::get('/profile', function () {
 		    return view('index');
 		});
 
-		Route::get('/{user}/diary', function () {
+		Route::get('/diary', function () {
 		    return view('index');
 		});
 
-		Route::get('/{user}/settings', function () {
+		Route::get('/settings', function () {
 		    return view('index');
 		});
 
-		Route::get('/{user}/addsymptom', function () {
+		Route::get('/addsymptom', function () {
 		    return view('index');
 		});
 
-		Route::get('/{user}/bloodpressure', function () {
+		Route::get('/bloodpressure', function () {
 		    return view('index');
 		});
 
-		Route::get('/{user}/calories', function () {
+		Route::get('/calories', function () {
 		    return view('index');
 		});
 
-		Route::get('/{user}/goals', function () {
+		Route::get('/goals', function () {
 		    return view('index');
 		});
 
-		Route::get('/{user}/sleep', function () {
+		Route::get('/sleep', function () {
 		    return view('index');
 		});
 
-		Route::get('/{user}/distance', function () {
+		Route::get('/distance', function () {
 		    return view('index');
 		});
 
-		Route::get('/{user}/water', function () {
+		Route::get('/water', function () {
 		    return view('index');
 		});
 
-		Route::get('/{user}/floors', function () {
+		Route::get('/floors', function () {
 		    return view('index');
 		});
-		Route::get('/{user}/vitals', function () {
+		Route::get('/vitals', function () {
 		    return view('index');
 		});
-		Route::get('/{user}/body', function () {
+		Route::get('/body', function () {
 		    return view('index');
 		});
-
-		Route::get('{user}/notes', function () {
+		Route::get('/symptom', function () {
 		    return view('index');
 		});
-		Route::get('/{user}/activity', function () {
+		Route::get('/activity', function () {
 		    return view('index');
 		});
-		Route::get('/{user}/activityPage', function () {
+		Route::get('/activityPage', function () {
 		    return view('index');
 		});
-		Route::get('/{user}/epionegraph', function () {
+		Route::get('/epionegraph', function () {
 		    return view('index');
 		});
 		Route::get('/welcome', function () {
+		    return view('index');
+		});
+		Route::get('/temperature', function () {
 		    return view('index');
 		});
 
