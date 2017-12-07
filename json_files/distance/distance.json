@@ -1,0 +1,202 @@
+{
+	"distance": {
+		"dataset": [
+			{
+				"time": "00:01",
+				"distance": 0.0
+			},
+			{
+				"time": "00:30",
+				"distance": 0.0
+			},
+			{
+				"time": "01:00",
+				"distance": 0.0
+			},
+			{
+				"time": "01:30",
+				"distance": 0.0
+			},
+			{
+				"time": "02:00",
+				"distance": 0.0
+			},
+			{
+				"time": "02:30",
+				"distance": 0.0
+			},
+			{
+				"time": "03:00",
+				"distance": 0.0
+			},
+			{
+				"time": "03:30",
+				"distance": 0.0
+			},
+			{
+				"time": "04:00",
+				"distance": 0.0
+			},
+			{
+				"time": "04:30",
+				"distance": 0.0
+			},
+			{
+				"time": "05:00",
+				"distance": 0.0
+			},
+			{
+				"time": "05:30",
+				"distance": 0.0
+			},
+			{
+				"time": "06:00",
+				"distance": 0.0
+			},
+			{
+				"time": "06:30",
+				"distance": 0.0
+			},
+			{
+				"time": "07:00",
+				"distance": 0.0
+			},
+			{
+				"time": "07:30",
+				"distance": 64.77
+			},
+			{
+				"time": "08:00",
+				"distance": 383.286
+			},
+			{
+				"time": "08:30",
+				"distance": 727.71
+			},
+			{
+				"time": "09:00",
+				"distance": 1211.58
+			},
+			{
+				"time": "09:30",
+				"distance": 1262.634
+			},
+			{
+				"time": "10:00",
+				"distance": 1321.308
+			},
+			{
+				"time": "10:30",
+				"distance": 1922.526
+			},
+			{
+				"time": "11:00",
+				"distance": 1939.29
+			},
+			{
+				"time": "11:30",
+				"distance": 2423.922
+			},
+			{
+				"time": "12:00",
+				"distance": 2770.632
+			},
+			{
+				"time": "12:30",
+				"distance": 3060.954
+			},
+			{
+				"time": "13:00",
+				"distance": 3437.382
+			},
+			{
+				"time": "13:30",
+				"distance": 3784.092
+			},
+			{
+				"time": "14:00",
+				"distance": 4215.384
+			},
+			{
+				"time": "14:30",
+				"distance": 4478.274
+			},
+			{
+				"time": "15:00",
+				"distance": 4737.354
+			},
+			{
+				"time": "15:30",
+				"distance": 5147.31
+			},
+			{
+				"time": "16:00",
+				"distance": 5615.178
+			},
+			{
+				"time": "16:30",
+				"distance": 5885.688
+			},
+			{
+				"time": "17:00",
+				"distance": 6119.622
+			},
+			{
+				"time": "17:30",
+				"distance": 6261.354
+			},
+			{
+				"time": "18:00",
+				"distance": 6720.078
+			},
+			{
+				"time": "18:30",
+				"distance": 7139.9400000000005
+			},
+			{
+				"time": "19:00",
+				"distance": 7415.784
+			},
+			{
+				"time": "19:30",
+				"distance": 7647.432
+			},
+			{
+				"time": "20:00",
+				"distance": 8151.1140000000005
+			},
+			{
+				"time": "20:30",
+				"distance": 8330.946
+			},
+			{
+				"time": "21:00",
+				"distance": 8532.876
+			},
+			{
+				"time": "21:30",
+				"distance": 9038.082
+			},
+			{
+				"time": "22:00",
+				"distance": 9157.716
+			},
+			{
+				"time": "22:30",
+				"distance": 9319.26
+			},
+			{
+				"time": "23:00",
+				"distance": 9648.444
+			},
+			{
+				"time": "23:30",
+				"distance": 9988.296
+			},
+			{
+				"time": "23:59",
+				"distance": 10102.596
+			}
+		]
+	}
+}

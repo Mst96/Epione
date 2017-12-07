@@ -1,16 +1,22 @@
 import React from 'react';
 import { render } from 'react-dom';
-// import { Chart } from 'react-google-charts';
 import {LineChart} from 'react-easy-chart';
-// import RTChart from 'react-rt-chart';
-let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
+import { timeParse as parse } from 'd3-time-format';
+
+let data = require('../../../json_files/distance/distance.json')["distance"]["dataset"];
 
  
-export default class HeartRatePage extends React.Component {
+export default class DistancePage extends React.Component {
   constructor(props) {
     super(props);
+
+    var array = [];
+    for( var i = 0; i < data.length; i++ ){
+      array.push({"x": data[i].time, "y": data[i].distance})
+    };
+
     this.state = {
-      data: [], 
+      data: array, 
       componentWidth: 300,
       current: 0
     };
@@ -19,20 +25,6 @@ export default class HeartRatePage extends React.Component {
   }
 
   componentDidMount() {
-    var rate;
-    var array = [];
-    for (var i = 0; i <= 5; i++) {
-      rate = Math.floor((Math.random() * 46) + 55);
-      array.push({"x": i, "y": rate});
-    };
-    this.setState({ data: array });
-    setInterval(() => {
-    var newrate = Math.floor((Math.random() * 46) + 55);
-    array.push({"x": i, "y": newrate});
-    this.setState({ data: array });
-    i++;
-  }, 3000);
-
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
   }
@@ -46,17 +38,24 @@ export default class HeartRatePage extends React.Component {
 
   render() {
     var stuff = this.state.data;
+
     return (
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-lg-15" ref="block" >
             <div class="block" ref={input => {this.myInput = input}}>
-              <btitle>Distance</btitle>
+              <btitle>Distance Travelled Yesterday</btitle>
               <LineChart
                 axes
-                width={this.state.componentWidth}
-                height={(this.state.componentWidth / 3)}
-                axisLabels={{x: 'Reading', y: 'Distance Travelled'}}
+                grid
+                dataPoints
+                datePattern={'%H:%M'}
+                margin={{ top: 50, right: 0, bottom: 50, left: 80 }}
+                width={this.state.componentWidth - 80}
+                height={(this.state.componentWidth / 3) * 2}
+                lineColors={['#5DADE2']}
+                axisLabels={{x: 'Time', y: 'Distance Travelled (Meters)'}}
+                xType={'time'}
                 data={[this.state.data]}
               />
             </div>

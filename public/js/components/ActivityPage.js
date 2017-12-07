@@ -371,7 +371,7 @@ export default class ActivityPage extends React.Component{
 						<div class="block" ref={input => {this.myInput = input}}>
 							<btitle>Pedometer</btitle>
 							<link href="//cdn.muicss.com/mui-0.9.30/css/mui.min.css" rel="stylesheet" type="text/css" media="screen" />
-							<Tabs justified={true} onChange={this.onChange} selectedIndex={this.state.selectedYearIndex}>
+							<Tabs justified={true} onChange={this.onChange}>
 								<Tab value="2014" label="2014">
 									<Tabs justified={true}>
 										<Tab value="Jan" label="Jan">
@@ -853,7 +853,7 @@ export default class ActivityPage extends React.Component{
 									</Tabs>
 								</Tab>
 								<Tab value="2017" label="2017">
-									<Tabs justified={true} selectedIndex={this.state.selectedMonthIndex}>
+									<Tabs justified={true}>
 										<Tab value="Jan" label="Jan">
 											<BarChart
 												axes
