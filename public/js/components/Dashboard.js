@@ -36,8 +36,6 @@ return(
             <Tile3 linkTo={"/" + this.state.user.firstName + "/diary"} image="https://png.icons8.com/?id=14011&size=2x" name='Calendar'/>
             <Tile3 linkTo={"/" + this.state.user.firstName + "/settings"} image="https://png.icons8.com/ios/2x/settings.png" name='Settings'/>
             <Tile3 linkTo={"/" + this.state.user.firstName + "/notes"} image="http://www.iconninja.com/files/226/262/383/pencil-clipboard-notes-pen-icon.svg" name='Notes'/>
-
-            
                    
         
 

@@ -80,7 +80,6 @@ Route::get('/{user}/heartrate', function () {
 		Route::get('/{user}/body', function () {
 		    return view('index');
 		});
-
 		Route::get('{user}/notes', function () {
 		    return view('index');
 		});
@@ -93,9 +92,11 @@ Route::get('/{user}/heartrate', function () {
 		Route::get('/{user}/epionegraph', function () {
 		    return view('index');
 		});
-		Route::get('/welcome', function () {
+		Route::get('/{user}/welcome', function () {
 		    return view('index');
 		});
+
+
 
 Route::group(['middleware' => ['verify.auth']], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
