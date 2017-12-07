@@ -29,12 +29,12 @@ return(
     <div class="container">
         <div class="row">
        
-           <h1>Welcome to Epione, {profile.user.displayName}. </h1>
+           <h1>Welcome to Epione, {this.state.user.firstName}. </h1>
     
 
         </div>
 
-        <Tile4 linkTo={"/Patient/dashboard"} image="" name='Go To Dashboard'/>  
+        <Tile4 linkTo={"/"+ this.state.user.firstName+"/dashboard"} image="" name='Go To Dashboard'/>  
     </div>
         );
 }

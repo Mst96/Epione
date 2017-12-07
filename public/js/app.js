@@ -35,30 +35,29 @@ ReactDOM.render(
       <Route path = "/" component = { Layout }>
         <IndexRoute component = { Home }></IndexRoute>
         <Route path = "/login" component = { Login }></Route>
-        <Route path = "/dashboard" component = { Dashboard }></Route>
         <Route path = "/:user/dashboard" component = { Dashboard }></Route>
-        <Route path = "/home" component = { Home }></Route>
+        <Route path = "/:user/dashboard" component = { Dashboard }></Route>
         <Route path = "/patients" component = { Patients }></Route>
-        <Route path = "/heartrate" component = { HeartRate }></Route>
-        <Route path = "/profile" component = { Profile }></Route>
-        <Route path = "/settings" component = { Usersettings }></Route>
-        <Route path = "/diary" component = { Diary }></Route>
-        <Route path = "/addsymptom" component = { Addsymptom }></Route>
-        <Route path = "/bloodpressure" component = { BloodPressurePage }></Route>
-        <Route path = "/calories" component = { CaloriesPage }></Route>
-        <Route path = "/goals" component = { Goals }></Route>
-        <Route path = "/sleep" component = { SleepPage }></Route>
-        <Route path = "/distance" component = { DistancePage }></Route>
-        <Route path = "/water" component = { WaterPage }></Route>
-        <Route path = "/floors" component = { FloorsPage }></Route>
-        <Route path = "/vitals" component = { Vitals }></Route>
-        <Route path = "/body" component = { Body }></Route>
-        <Route path = "/symptom" component = { Symptom }></Route>
-        <Route path = "/activity" component = { Activity }></Route>
-        <Route path = "/activitypage" component = { ActivityPage }></Route>
-        <Route path = "/epionegraph" component = { EpioneGraph }></Route>
-        <Route path = "/welcome" component = { WelcomePage }></Route>
-        <Route path = "/temperature" component = { Temperature }></Route>
+        <Route path = "/:user/heartrate" component = { HeartRate }></Route>
+        <Route path = "/:user/profile" component = { Profile }></Route>
+        <Route path = "/:user/settings" component = { Usersettings }></Route>
+        <Route path = "/:user/diary" component = { Diary }></Route>
+        <Route path = "/:user/addsymptom" component = { Addsymptom }></Route>
+        <Route path = "/:user/bloodpressure" component = { BloodPressurePage }></Route>
+        <Route path = "/:user/calories" component = { CaloriesPage }></Route>
+        <Route path = "/:user/goals" component = { Goals }></Route>
+        <Route path = "/:user/sleep" component = { SleepPage }></Route>
+        <Route path = "/:user/distance" component = { DistancePage }></Route>
+        <Route path = "/:user/water" component = { WaterPage }></Route>
+        <Route path = "/:user/floors" component = { FloorsPage }></Route>
+        <Route path = "/:user/vitals" component = { Vitals }></Route>
+        <Route path = "/:user/body" component = { Body }></Route>
+        <Route path = "/:user/symptom" component = { Symptom }></Route>
+        <Route path = "/:user/activity" component = { Activity }></Route>
+        <Route path = "/:user/activitypage" component = { ActivityPage }></Route>
+        <Route path = "/:user/epionegraph" component = { EpioneGraph }></Route>
+        <Route path = "/:user/welcome" component = { WelcomePage }></Route>
+        <Route path = "/:user/temperature" component = { Temperature }></Route>
       </Route>
     </Router>,
     app);

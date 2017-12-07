@@ -35,7 +35,7 @@ export default class HeartRatePage extends React.Component {
     var stuff = this.state.data;
     return (
       <div>
-      <h1>Current Blood Pressure: {this.state.current}</h1>;
+      <h1>Current Heart Rate: {this.state.current}</h1>;
       <LineChart
       xType={'text'}
       yDomainRange={[0, 120]}
