@@ -6,7 +6,7 @@ import Fetch from 'react-fetch';
 
 
 let profile = require('../../profile-test.json');
-let users = require('../../../users.json');
+let users = require('../../../json/users.json');
 
 export default class Dashboard extends React.Component{
     constructor(props) {

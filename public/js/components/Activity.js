@@ -4,7 +4,7 @@ import HeartRate from "../components/includes/HeartRate";
 import Fetch from 'react-fetch';
 import { Link } from "react-router";
 let profile = require('../../profile-test.json');
-let users = require('../../../users.json');
+let users = require('../../../json/users.json');
 
 export default class Activity extends React.Component{
     constructor(props) {

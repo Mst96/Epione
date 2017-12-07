@@ -5,7 +5,7 @@ import {LineChart} from 'react-easy-chart';
 import axios from 'axios';
 // import RTChart from 'react-rt-chart';
 // let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
-let data = require('../../../heartrate.json')["data"];
+let data = require('../../../json/heartrate.json')["data"];
 
  
 export default class HeartRatePage extends React.Component {
@@ -24,7 +24,7 @@ export default class HeartRatePage extends React.Component {
       rate = Math.floor((Math.random() * 20) + 55);
       array.push({"x": h + ":" + m, "y": rate});
     };
-    this.setState({ data: array });
+    this.setState({ data: array , current: rate});
     var i = 5;
     setInterval(() => {
       if(i > 15){
@@ -35,7 +35,7 @@ export default class HeartRatePage extends React.Component {
       }
       array.push({"x": data[i].x, "y": data[i].y})
       if(data[i].y > 120) this.notify();
-      this.setState({ data: array });
+      this.setState({ data: array, current: data[i].y });
       i++;
   }, 3000);
   }

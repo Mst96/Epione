@@ -7,7 +7,7 @@ import Fetch from 'react-fetch';
 import {BarChart} from 'react-easy-chart';
 
 let profile = require('../../profile-test.json');
-let data = require('../../../steps.json')["step-counter"]["dataset"];
+let data = require('../../../json/steps.json')["step-counter"]["dataset"];
 
 export default class CalendarPage extends React.Component{
 	constructor(props) {
