@@ -24,7 +24,7 @@ class FirebaseMessagingController extends Controller
         $message = new Message();
         $message->setPriority('high');
         $message->addRecipient(new Device('c30J4EPDW2k:APA91bH7en3Xs4WXyKrngEei2Lnk-EjghRXwaGLYA-lq5d3siAQbykLulwQ6TZvhR1OF9IB-fs2rjuTJWfDNrG-Q1fcGU5hfPZN60b1rHutprWAO7B-79webdWGwMrHgHD1JcM58sxag'));
-        $message->setNotification(new Notification($request('message'), 'Check in on Client'))
+        $message->setNotification(new Notification(request('message'), 'Check in on Client'))
                 ->setData(['mobile' => '12345678910']);
 
         $response = $this->client->send($message);

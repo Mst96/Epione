@@ -21,12 +21,12 @@ import WaterPage from "./components/WaterPage";
 import FloorsPage from "./components/FloorsPage";
 import Vitals from "./components/Vitals";
 import Body from "./components/Body";
-import Symptom from "./components/Symptom";
+import Notes from "./components/Notes";
 import Activity from "./components/Activity";
 import ActivityPage from "./components/ActivityPage";
 import EpioneGraph from "./components/EpioneGraph";
 import WelcomePage from "./components/WelcomePage";
-import Temperature from "./components/Temperature";
+
 
 const app = document.getElementById('app');
 
@@ -35,7 +35,6 @@ ReactDOM.render(
       <Route path = "/" component = { Layout }>
         <IndexRoute component = { Home }></IndexRoute>
         <Route path = "/login" component = { Login }></Route>
-        <Route path = "/:user/dashboard" component = { Dashboard }></Route>
         <Route path = "/:user/dashboard" component = { Dashboard }></Route>
         <Route path = "/patients" component = { Patients }></Route>
         <Route path = "/:user/heartrate" component = { HeartRate }></Route>
@@ -52,12 +51,11 @@ ReactDOM.render(
         <Route path = "/:user/floors" component = { FloorsPage }></Route>
         <Route path = "/:user/vitals" component = { Vitals }></Route>
         <Route path = "/:user/body" component = { Body }></Route>
-        <Route path = "/:user/symptom" component = { Symptom }></Route>
+        <Route path = "/:user/notes" component = { Notes }></Route>
         <Route path = "/:user/activity" component = { Activity }></Route>
         <Route path = "/:user/activitypage" component = { ActivityPage }></Route>
         <Route path = "/:user/epionegraph" component = { EpioneGraph }></Route>
         <Route path = "/:user/welcome" component = { WelcomePage }></Route>
-        <Route path = "/:user/temperature" component = { Temperature }></Route>
       </Route>
     </Router>,
     app);

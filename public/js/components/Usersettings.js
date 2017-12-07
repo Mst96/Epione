@@ -8,8 +8,21 @@ import { Link } from "react-router";
 let profile = require('../../profile-test.json');
 
 export default class Usersettings extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {user: {}};
+    }
+    componentDidMount() {
+        var param = this.props.params.user;
+        var user = users.filter(function(user){
+            if(user.firstName === param){
+                console.log("YOOO MATCH");
+                return user;
+            }
+        })
+        this.setState({user: user[0]});
+    }
 render(){
-    console.log(profile);
 return(
             <div class="container">
     <div class="row">
@@ -115,7 +128,7 @@ return(
 
             <div class="mt-2 col-sm-12 col-lg-4">
                 <div class="block">
-                    <Link to={'/Patient/dashboard'}>  <btitle>Back to Dashboard</btitle></Link>
+                    <Link to={'/' + this.state.user.firstName + '/dashboard'}>  <btitle>Back to Dashboard</btitle></Link>
                     <hr/>
                     <div class="text-center">
                         <i class="fa fa-cogs fa-3x" aria-hidden="true"></i>
