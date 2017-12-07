@@ -92,6 +92,9 @@ Route::get('/heartrate', function () {
 		Route::get('/epionegraph', function () {
 		    return view('index');
 		});
+		Route::get('/welcome', function () {
+		    return view('index');
+		});
 
 Route::group(['middleware' => ['verify.auth']], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

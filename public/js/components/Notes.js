@@ -2,8 +2,9 @@ import React from 'react';
 import Tile from "./includes/Tile";
 import { IndexLink, Link } from "react-router";
 import Fetch from 'react-fetch';
-let profile = require('../../profile-test.json');
 import TodoItems from './includes/TodoItems';
+let profile = require('../../profile-test.json');
+
 
 
 export default class Notes extends React.Component {

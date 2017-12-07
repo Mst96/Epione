@@ -25,6 +25,7 @@ import Notes from "./components/Notes";
 import Activity from "./components/Activity";
 import ActivityPage from "./components/ActivityPage";
 import EpioneGraph from "./components/EpioneGraph";
+import WelcomePage from "./components/WelcomePage";
 
 
 const app = document.getElementById('app');
@@ -56,6 +57,7 @@ ReactDOM.render(
         <Route path = "/activity" component = { Activity }></Route>
         <Route path = "/activitypage" component = { ActivityPage }></Route>
         <Route path = "/epionegraph" component = { EpioneGraph }></Route>
+        <Route path = "/welcome" component = { WelcomePage }></Route>
       </Route>
     </Router>,
     app);

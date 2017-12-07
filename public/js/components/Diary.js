@@ -4,6 +4,7 @@ import HeartRate from "../components/includes/HeartRate";
 import Allergies from "../components/includes/Allergies";
 import Symptoms from "../components/includes/Symptoms";
 import Fetch from 'react-fetch';
+import { Link } from "react-router";
 let profile = require('../../profile-test.json');
 
 export default class Usersettings extends React.Component{
@@ -18,6 +19,7 @@ return(
                 <div class="block">
                     <btitle>Monday</btitle>
                     <hr/>
+                    
                     <div class="text-center">
                     <p>Goal: 5000 Steps</p>
                     <p>Achieved: 6000 Steps</p>
@@ -101,7 +103,7 @@ return(
 
             <div class="mt-2 col-sm-12 col-lg-4">
                 <div class="block">
-                    <btitle>Back to Dashboard</btitle>
+                    <Link to={'/Patient/dashboard'}>  <btitle>Back to Dashboard</btitle></Link>
                     <hr/>
                     <div class="text-center">
                         <i class="fa fa-cogs fa-3x" aria-hidden="true"></i>
