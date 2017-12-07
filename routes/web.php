@@ -23,55 +23,73 @@ Route::get('/{user}/dashboard', function () {
 Route::get('/patients', function () {
     	return view('index');
 		});
-Route::get('/heartrate', function () {
+Route::get('/{user}/heartrate', function () {
 		  return view('index');
 		});
 
-		Route::get('/addSymptoms', function () {
+		Route::get('/{user}/addSymptoms', function () {
 		    return view('index');
 		});
 
-		Route::get('/profile', function () {
+		Route::get('/{user}/profile', function () {
 		    return view('index');
 		});
 
-		Route::get('/diary', function () {
+		Route::get('/{user}/diary', function () {
 		    return view('index');
 		});
 
-		Route::get('/settings', function () {
+		Route::get('/{user}/settings', function () {
 		    return view('index');
 		});
 
-		Route::get('/addsymptom', function () {
+		Route::get('/{user}/addsymptom', function () {
 		    return view('index');
 		});
 
-		Route::get('/bloodpressure', function () {
+		Route::get('/{user}/bloodpressure', function () {
 		    return view('index');
 		});
 
-		Route::get('/calories', function () {
+		Route::get('/{user}/calories', function () {
 		    return view('index');
 		});
 
-		Route::get('/goals', function () {
+		Route::get('/{user}/goals', function () {
 		    return view('index');
 		});
 
-		Route::get('/sleep', function () {
+		Route::get('/{user}/sleep', function () {
 		    return view('index');
 		});
 
-		Route::get('/distance', function () {
+		Route::get('/{user}/distance', function () {
 		    return view('index');
 		});
 
-		Route::get('/water', function () {
+		Route::get('/{user}/water', function () {
 		    return view('index');
 		});
 
-		Route::get('/floors', function () {
+		Route::get('/{user}/floors', function () {
+		    return view('index');
+		});
+		Route::get('/{user}/vitals', function () {
+		    return view('index');
+		});
+		Route::get('/{user}/body', function () {
+		    return view('index');
+		});
+		Route::get('/{user}/symptom', function () {
+		    return view('index');
+		});
+		Route::get('/{user}/activity', function () {
+		    return view('index');
+		});
+		Route::get('/{user}/activityPage', function () {
+		    return view('index');
+		});
+		Route::get('/{user}/epionegraph', function () {
 		    return view('index');
 		});
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Log;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use sngrl\PhpFirebaseCloudMessaging\Client;
 use sngrl\PhpFirebaseCloudMessaging\Message;
 use sngrl\PhpFirebaseCloudMessaging\Recipient\Device;
@@ -18,20 +19,16 @@ class FirebaseMessagingController extends Controller
     }
 
     public function send(Request $request){
-        error_log($request->data);
-        Log::info("Product Info: " . $request);
-        Log::info("Product Info: " . $request->message);
+        $this->client->setApiKey($this->server_key);
+        $this->client->injectGuzzleHttpClient(new \GuzzleHttp\Client());
+        $message = new Message();
+        $message->setPriority('high');
+        $message->addRecipient(new Device('c30J4EPDW2k:APA91bH7en3Xs4WXyKrngEei2Lnk-EjghRXwaGLYA-lq5d3siAQbykLulwQ6TZvhR1OF9IB-fs2rjuTJWfDNrG-Q1fcGU5hfPZN60b1rHutprWAO7B-79webdWGwMrHgHD1JcM58sxag'));
+        $message->setNotification(new Notification($request('message'), 'Check in on Client'))
+                ->setData(['mobile' => '12345678910']);
 
-        // $this->client->setApiKey($this->server_key);
-        // $this->client->injectGuzzleHttpClient(new \GuzzleHttp\Client());
-        // $message = new Message();
-        // $message->setPriority('high');
-        // $message->addRecipient(new Device('c30J4EPDW2k:APA91bH7en3Xs4WXyKrngEei2Lnk-EjghRXwaGLYA-lq5d3siAQbykLulwQ6TZvhR1OF9IB-fs2rjuTJWfDNrG-Q1fcGU5hfPZN60b1rHutprWAO7B-79webdWGwMrHgHD1JcM58sxag'));
-        // $message->setNotification(new Notification($request->data, 'Check in on Client'))
-        //         ->setData(['mobile' => '12345678910']);
-
-        // $response = $this->client->send($message);
-        // var_dump($response->getStatusCode());
-        // var_dump($response->getBody()->getContents());
+        $response = $this->client->send($message);
+        var_dump($response->getStatusCode());
+        var_dump($response->getBody()->getContents());
     }
 }

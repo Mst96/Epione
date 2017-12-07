@@ -67,9 +67,9 @@ export default class HeartRatePage extends React.Component {
   }
 
   notify(){
-    axios.get('/api/notify', {message: "High Heart Rate"})
+    axios.post('/api/notify', {message: "High Heart Rate"})
     .then(success =>{
-        console.log("notified");
+        console.log(success);
         });
   }
 
