@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router";
 import User from "../components/includes/User";
 import Fetch from 'react-fetch';
-let users = require('../../../json/users.json');
+let users = require('../../../users.json');
 
 export default class Dashboard extends React.Component{
 render(){
