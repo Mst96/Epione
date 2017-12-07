@@ -80,7 +80,8 @@ Route::get('/{user}/heartrate', function () {
 		Route::get('/{user}/body', function () {
 		    return view('index');
 		});
-		Route::get('/{user}/symptom', function () {
+
+		Route::get('{user}/notes', function () {
 		    return view('index');
 		});
 		Route::get('/{user}/activity', function () {
@@ -90,6 +91,9 @@ Route::get('/{user}/heartrate', function () {
 		    return view('index');
 		});
 		Route::get('/{user}/epionegraph', function () {
+		    return view('index');
+		});
+		Route::get('/welcome', function () {
 		    return view('index');
 		});
 

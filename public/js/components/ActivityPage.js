@@ -23,6 +23,8 @@ export default class CalendarPage extends React.Component{
 			this.setState({ data: array})
 		}, 10);
 	}
+   
+
 
 	render(){
 		var stuff = this.state.data;
