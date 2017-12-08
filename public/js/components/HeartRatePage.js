@@ -5,7 +5,7 @@ import {LineChart} from 'react-easy-chart';
 import axios from 'axios';
 // import RTChart from 'react-rt-chart';
 // let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
-let data = require('../../../heartrate.json')["data"];
+let data = require('../../../json/heartrate.json')["data"];
 
  
 export default class HeartRatePage extends React.Component {
@@ -15,6 +15,7 @@ export default class HeartRatePage extends React.Component {
   }
   componentDidMount() {
     this.notify();
+    this.notifyLow();
     var rate;
     var array = [];
     var d = new Date();
@@ -35,7 +36,8 @@ export default class HeartRatePage extends React.Component {
       }
       array.push({"x": data[i].x, "y": data[i].y})
       if(data[i].y > 120) this.notify();
-      this.setState({ data: array });
+      if(data[i].y < 50) this.notifyLow();
+      this.setState({ data: array, current : data[i].y});
       i++;
   }, 3000);
   }
@@ -48,7 +50,7 @@ export default class HeartRatePage extends React.Component {
       <h1>Current Heart Rate: {this.state.current}</h1>;
       <LineChart
       xType={'text'}
-      yDomainRange={[0, 120]}
+      yDomainRange={[40, 140]}
       axes
       dataPoints
       width={750}
@@ -71,6 +73,13 @@ export default class HeartRatePage extends React.Component {
 
   notify(){
     axios.post('/api/notify', {message: "High Heart Rate"})
+    .then(success =>{
+        console.log(success);
+        });
+  }
+
+  notifyLow(){
+    axios.post('/api/notify', {message: "Low Heart Rate"})
     .then(success =>{
         console.log(success);
         });

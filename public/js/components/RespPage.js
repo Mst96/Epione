@@ -5,7 +5,7 @@ import {LineChart} from 'react-easy-chart';
 import axios from 'axios';
 // import RTChart from 'react-rt-chart';
 // let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
-let data = require('../../../respiratory.json')["data"];
+let data = require('../../../json/respiratory.json')["data"];
 
  
 export default class RespPage extends React.Component {
@@ -15,13 +15,14 @@ export default class RespPage extends React.Component {
   }
   componentDidMount() {
     this.notify();
+    this.notifyLow();
     var rate;
     var array = [];
     var d = new Date();
     for (var i = 0; i <= 5; i++) {
       var h = this.addZero(d.getUTCHours());
       var m = this.addZero(d.getUTCMinutes() + i);
-      rate = Math.floor((Math.random() * 20) + 55);
+      rate = Math.floor((Math.random() * 10) + 11);
       array.push({"x": h + ":" + m, "y": rate});
     };
     this.setState({ data: array });
@@ -34,8 +35,9 @@ export default class RespPage extends React.Component {
         console.log(array.length);
       }
       array.push({"x": data[i].x, "y": data[i].y})
-      if(data[i].y > 120) this.notify();
-      this.setState({ data: array });
+      if(data[i].y > 30) this.notify();
+      if(data[i].y < 10) this.notifyLow();
+      this.setState({ data: array, current : data[i].y});
       i++;
   }, 3000);
   }
@@ -48,13 +50,13 @@ export default class RespPage extends React.Component {
       <h1>Respiratory Rate: {this.state.current}</h1>;
       <LineChart
       xType={'text'}
-      yDomainRange={[0, 120]}
+      yDomainRange={[4, 30]}
       axes
       dataPoints
       width={750}
       height={500}
       grid
-      axisLabels={{x: 'Reading', y: 'Respiratory'}}
+      axisLabels={{x: 'Reading', y: 'Respiratory Rate (breaths per minute)'}}
     data={[this.state.data]}/>
             </div>
     );
@@ -70,7 +72,14 @@ export default class RespPage extends React.Component {
   }
 
   notify(){
-    axios.post('/api/notify', {message: "High Heart Rate"})
+    axios.post('/api/notify', {message: "High Respiratory Rate"})
+    .then(success =>{
+        console.log(success);
+        });
+  }
+
+  notifyLow(){
+    axios.post('/api/notify', {message: "Low Respiratory Rate"})
     .then(success =>{
         console.log(success);
         });

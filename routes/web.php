@@ -95,8 +95,27 @@ Route::get('/{user}/heartrate', function () {
 		Route::get('/{user}/welcome', function () {
 		    return view('index');
 		});
+		Route::get('/{user}/temperature', function () {
+		    return view('index');
+		});
+		Route::get('/{user}/respiratory', function () {
+		    return view('index');
+		});
+		Route::get('/{user}/weight', function () {
+		    return view('index');
+		});
+		Route::get('/{user}/bmi', function () {
+		    return view('index');
+		});
+		Route::get('/{user}/bodyfat', function () {
+		    return view('index');
+		});
+		Route::get('/{user}/bodywater', function () {
+		    return view('index');
+		});
 
 
+		
 
 Route::group(['middleware' => ['verify.auth']], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
