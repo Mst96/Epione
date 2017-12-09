@@ -20,8 +20,8 @@ export default class Tile2 extends React.Component{
                         <div class="thumbnail">
                             <img src={image} alt="name" class="img-thumbnail"/>
                         </div>
-                        <p>{line1}</p>
-                        <p>{line2}</p>
+                        <h2>{line1}</h2>
+                        <h3>{line2}</h3>
                     </div>
                     </Link>
                 </div>
