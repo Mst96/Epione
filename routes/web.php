@@ -117,11 +117,11 @@ Route::get('/{user}/heartrate', function () {
 
 		
 
-		Route::get('/steps', function () {
+		Route::get('/{user}/steps', function () {
 		    return view('index');
 		});
 
-		Route::get('/health', function () {
+		Route::get('/{user}/health', function () {
 		    return view('index');
 		});
 

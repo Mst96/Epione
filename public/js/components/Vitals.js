@@ -15,7 +15,7 @@ let respiratory = require('../../../json/respiratory/respiratory-realtime.json')
 export default class Vitals extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {user: {}, heartrate: heartrate, bloodpressure: bloodpressure, temperature: temperature, respiratory: respiratory };
+        this.state = {user: {}, heartrate: heartrate[2].y, bloodpressure: bloodpressure[2].y, temperature: temperature[2].y, respiratory: respiratory[2].y };
     }
     componentDidMount() {
         var param = this.props.params.user;
