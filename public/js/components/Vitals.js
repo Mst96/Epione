@@ -4,6 +4,7 @@ import HeartRate from "../components/includes/HeartRate";
 import Fetch from 'react-fetch';
 import { Link } from "react-router";
 let profile = require('../../profile-test.json');
+
 let users = require('../../../json/users.json');
 let heartrate = require('../../../json/heartrate/heartrate-realtime.json');
 let bloodpressure = require('../../../json/bloodpressure/bloodpressure-realtime.json');
@@ -14,7 +15,7 @@ let respiratory = require('../../../json/respiratory/respiratory-realtime.json')
 export default class Vitals extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {user: {}, heartrate: 65.2, bloodpressure: 103.8, temperature: 36.4, respiratory: 15.2 };
+        this.state = {user: {}, heartrate: heartrate, bloodpressure: bloodpressure, temperature: temperature, respiratory: respiratory };
     }
     componentDidMount() {
         var param = this.props.params.user;
@@ -40,7 +41,7 @@ return(
             <Tile linkTo={"/"+ this.state.user.firstName +"/bloodpressure"} image="https://png.icons8.com/ios/2x/pressure.png" name='Blood Pressure' line1={"Blood Pressure:"} line2={this.state.bloodpressure}/>
             <Tile linkTo={"/"+ this.state.user.firstName +"/heartrate"} image="http://www.ti.com/content/dam/ticom/images/icons/red/temperature-sensor-icon-24396.png" name='Temperature' line1={"Temperature"} line2={this.state.temperature}/>
             <Tile linkTo={"/"+ this.state.user.firstName +"/heartrate"} image="https://www.gwinnettmedicalcenter.org/_img/lung-navy.png" name='Respiratory Rate' line1={"Respiratory Rate:"} line2={this.state.respiratory}/>
-               </div>
+        </div>
     </div>
         );
 }

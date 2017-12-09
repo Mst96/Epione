@@ -26,7 +26,12 @@ import Activity from "./components/Activity";
 import ActivityPage from "./components/ActivityPage";
 import EpioneGraph from "./components/EpioneGraph";
 import WelcomePage from "./components/WelcomePage";
-
+import TemperaturePage from "./components/TemperaturePage";
+import RespPage from "./components/RespPage";
+import WeightPage from "./components/WeightPage";
+import BMIpage from "./components/BMIpage";
+import BodyFatPage from "./components/BodyFatPage";
+import BodyWaterPage from "./components/BodyWaterPage";
 
 const app = document.getElementById('app');
 
@@ -56,6 +61,12 @@ ReactDOM.render(
         <Route path = "/:user/activitypage" component = { ActivityPage }></Route>
         <Route path = "/:user/epionegraph" component = { EpioneGraph }></Route>
         <Route path = "/:user/welcome" component = { WelcomePage }></Route>
+        <Route path = "/:user/temperature" component = { TemperaturePage }></Route>
+        <Route path = "/:user/respiratory" component = { RespPage }></Route>
+        <Route path = "/:user/weight" component = { WeightPage }></Route>
+        <Route path = "/:user/bmi" component = { BMIpage }></Route>
+        <Route path = "/:user/bodyfat" component = { BodyFatPage }></Route>
+        <Route path = "/:user/bodywater" component = { BodyWaterPage }></Route>
       </Route>
     </Router>,
     app);

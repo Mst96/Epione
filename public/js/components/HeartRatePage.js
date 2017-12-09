@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 // import { Chart } from 'react-google-charts';
 import {LineChart} from 'react-easy-chart';
-import ToolTip from './includes/ToolTip';
 import axios from 'axios';
 // import RTChart from 'react-rt-chart';
 // let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
@@ -12,7 +11,8 @@ let data = require('../../../json/heartrate/heartrate-realtime.json');
 export default class HeartRatePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {data: [], 
+    this.state = {data: [],
+      user: "", 
       current: 0,
       showToolTip: false,
       top: 0,
@@ -22,7 +22,6 @@ export default class HeartRatePage extends React.Component {
     };
   }
   componentDidMount() {
-    // this.notify();
     var rate;
     var array = [];
     var d = new Date();
@@ -32,21 +31,27 @@ export default class HeartRatePage extends React.Component {
       rate = Math.floor((Math.random() * 20) + 55);
       array.push({"x": h + ":" + m, "y": rate});
     };
-    this.setState({ data: array , current: rate});
+    var param = this.props.params.user;
+      var user = users.filter(function(user){
+          if(user.firstName === param){
+              return user;
+          }
+      })
+    this.setState({ data: array, user: user[0] });
     var i = 5;
     setInterval(() => {
       if(i > 15){
-        console.log("yo");
-        console.log(array.length);
         array.shift();
-        console.log(array.length);
       }
       array.push({"x": data[i].x, "y": data[i].y})
-      // if(data[i].y > 120) this.notify();
-      this.setState({ data: array, current: data[i].y });
+      if(data[i].y > 120) this.notify(this.state.user + "Has a Dangerously High Heart Rate");
+      if(data[i].y < 50) this.notify(this.state.user + "Has a Dangerously Low Heart Rate");
+      this.setState({ data: array, current : data[i].y});
       i++;
   }, 3000);
   }
+
+  
   render() {
     var stuff = this.state.data;
     var tooltip = null;
@@ -60,7 +65,7 @@ export default class HeartRatePage extends React.Component {
 
       <LineChart
       xType={'text'}
-      yDomainRange={[0, 120]}
+      yDomainRange={[40, 140]}
       axes
       dataPoints
       mouseOverHandler={this.mouseOverHandler}
@@ -118,8 +123,8 @@ export default class HeartRatePage extends React.Component {
   }
 
 
-  notify(){
-    axios.post('/api/notify', {message: "High Heart Rate"})
+  notify(message){
+    axios.post('/api/notify', {message: message})
     .then(success =>{
         console.log(success);
         });
