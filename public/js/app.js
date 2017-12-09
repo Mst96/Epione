@@ -20,6 +20,7 @@ import DistancePage from "./components/DistancePage";
 import WaterPage from "./components/WaterPage";
 import FloorsPage from "./components/FloorsPage";
 import ActivityPage from "./components/ActivityPage";
+import Health from "./components/HealthGauge";
 
 const app = document.getElementById('app');
 
@@ -45,6 +46,7 @@ ReactDOM.render(
         <Route path = "/water" component = { WaterPage }></Route>
         <Route path = "/floors" component = { FloorsPage }></Route>
         <Route path = "/steps" component = { ActivityPage }></Route>
+        <Route path = "/health" component = { Health }></Route>
       </Route>
     </Router>,
     app);

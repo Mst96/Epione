@@ -370,7 +370,7 @@ export default class ActivityPage extends React.Component{
 					<div class="col-sm-12 col-lg-15" ref="block">
 						<div class="block" ref={input => {this.myInput = input}}>
 							<btitle>Pedometer</btitle>
-							<link href="//cdn.muicss.com/mui-0.9.30/css/mui.min.css" rel="stylesheet" type="text/css" media="screen" />
+							<link href="../../../css/mui.min.css" rel="stylesheet" type="text/css" media="screen" />
 							<Tabs justified={true} onChange={this.onChange}>
 								<Tab value="2014" label="2014">
 									<Tabs justified={true}>
