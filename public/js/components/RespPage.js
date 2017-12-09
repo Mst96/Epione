@@ -5,7 +5,7 @@ import {LineChart} from 'react-easy-chart';
 import axios from 'axios';
 // import RTChart from 'react-rt-chart';
 // let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
-let data = require('../../../json/respiratory.json')["data"];
+let data = require('../../../json/respiratory/respiratory-realtime.json');
 
  
 export default class RespPage extends React.Component {

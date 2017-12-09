@@ -1,62 +1,71 @@
 import React from 'react';
 import { render } from 'react-dom';
-// import { Chart } from 'react-google-charts';
 import {LineChart} from 'react-easy-chart';
+
 import axios from 'axios';
 // import RTChart from 'react-rt-chart';
 // let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
-let data = require('../../../steps.json')["data"];
+import { timeParse as parse } from 'd3-time-format';
+
+let data = require('../../../json_files/distance/distance.json')["distance"]["dataset"];
+
 
  
 export default class DistancePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {data: [], current: 0};
-  }
-  componentDidMount() {
-    this.notify();
-    var rate;
+
     var array = [];
-    var d = new Date();
-    for (var i = 0; i <= 5; i++) {
-      var h = this.addZero(d.getUTCHours());
-      var m = this.addZero(d.getUTCMinutes() + i);
-      rate = Math.floor((Math.random() * 20) + 55);
-      array.push({"x": h + ":" + m, "y": rate});
+    for( var i = 0; i < data.length; i++ ){
+      array.push({"x": data[i].time, "y": data[i].distance})
     };
-    this.setState({ data: array });
-    var i = 5;
-    setInterval(() => {
-      if(i > 15){
-        console.log("yo");
-        console.log(array.length);
-        array.shift();
-        console.log(array.length);
-      }
-      array.push({"x": data[i].x, "y": data[i].y})
-      if(data[i].y > 120) this.notify();
-      this.setState({ data: array });
-      i++;
-  }, 3000);
+
+    this.state = {
+      data: array, 
+      componentWidth: 300,
+      current: 0
+    };
+
+    this.handleResize = this.handleResize.bind(this);
   }
 
-  
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  }
+
+  handleResize() {
+    this.setState({
+      windowWidth: window.innerWidth - 100,
+      componentWidth: this.myInput.offsetWidth
+    });
+  }
+
   render() {
     var stuff = this.state.data;
+
     return (
-      <div>
-      <h1>Distance Travalled (Miles): {this.state.current}</h1>;
-      <LineChart
-      xType={'text'}
-      yDomainRange={[0, 120]}
-      axes
-      dataPoints
-      width={750}
-      height={500}
-      grid
-      axisLabels={{x: 'Reading', y: 'Distance Travelled'}}
-    data={[this.state.data]}/>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-lg-15" ref="block" >
+            <div class="block" ref={input => {this.myInput = input}}>
+              <btitle>Distance Travelled Yesterday</btitle>
+              <LineChart
+                axes
+                grid
+                dataPoints
+                datePattern={'%H:%M'}
+                margin={{ top: 50, right: 0, bottom: 50, left: 80 }}
+                width={this.state.componentWidth - 80}
+                height={(this.state.componentWidth / 3) * 2}
+                lineColors={['#5DADE2']}
+                axisLabels={{x: 'Time', y: 'Distance Travelled (Meters)'}}
+                xType={'time'}
+                data={[this.state.data]}/>
             </div>
+          </div>
+        </div>
+      </div> 
     );
   }
   addZero(i) {

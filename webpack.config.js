@@ -6,9 +6,6 @@ module.exports = {
     devtool: debug ? "inline-sourcemap" : null,
     entry: "./js/app.js",
     module: {
-        preLoaders: [
-        { test: /\.json$/, exclude: /node_modules/, loader: 'json'},
-        ],
         loaders: [
             {
                 test: /\.jsx?$/,
@@ -22,6 +19,9 @@ module.exports = {
             {
                 test: /\.css$/,
                 loader:'style!css!'
+            },
+            {
+                test: /\.json$/, exclude: /node_modules/, loader: 'json-loader'
             }
         ]
     },

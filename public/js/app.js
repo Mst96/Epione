@@ -32,6 +32,7 @@ import WeightPage from "./components/WeightPage";
 import BMIpage from "./components/BMIpage";
 import BodyFatPage from "./components/BodyFatPage";
 import BodyWaterPage from "./components/BodyWaterPage";
+import Health from "./components/HealthGauge";
 
 const app = document.getElementById('app');
 
@@ -67,6 +68,7 @@ ReactDOM.render(
         <Route path = "/:user/bmi" component = { BMIpage }></Route>
         <Route path = "/:user/bodyfat" component = { BodyFatPage }></Route>
         <Route path = "/:user/bodywater" component = { BodyWaterPage }></Route>
+        <Route path = "/:user/health" component = { Health }></Route>
       </Route>
     </Router>,
     app);
