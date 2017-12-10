@@ -4,6 +4,7 @@ import Fetch from 'react-fetch';
 import {BarChart} from 'react-easy-chart';
 import Tabs from 'muicss/lib/react/tabs';
 import Tab from 'muicss/lib/react/tab';
+let users = require('../../../json/users.json');
 
 
 let jan2014 = require('../../../json_files/steps/january2014Steps.json')["step-counter"]["dataset"];
@@ -310,9 +311,15 @@ export default class ActivityPage extends React.Component{
 		this.onClickMonth = this.onClickMonth.bind(this);
 
 		this.state = {
+			user: {},
 			componentWidth: 300,
 			selectedYearIndex: 3,
 			selectedMonthIndex: 11,
+      showToolTip: false,
+      top: 0,
+      left: 0,
+      x: 0,
+      y: 0,
 			jan2014: array, feb2014: array2, mar2014: array3, apr2014: array4, may2014: array5, jun2014: array6, jul2014: array45, aug2014: array7, sep2014: array8, oct2014: array9, nov2014: array10, dec2014: array11,
 			jan2015: array12, feb2015: array13, mar2015: array14, apr2015: array15, may2015: array16, jun2015: array17, jul2015: array46, aug2015: array18, sep2015: array19, oct2015: array20, nov2015: array21, dec2015: array22,
 			jan2016: array23, feb2016: array24, mar2016: array25, apr2016: array26, may2016: array27, jun2016: array28, jul2016: array47, aug2016: array29, sep2016: array30, oct2016: array31, nov2016: array32, dec2016: array33,
@@ -331,7 +338,26 @@ export default class ActivityPage extends React.Component{
 	componentDidMount() {
 		window.addEventListener('resize', this.handleResize);
 		this.handleResize();
+		var param = this.props.params.user;
+        var user = users.filter(function(user){
+            if(user.firstName === param){
+                return user;
+            }
+        })
+    this.setState({user: user[0]});
 	}
+
+	selected(){
+    return (<h1>At {this.state.x}, {this.state.user.firstName} climbed {this.state.y} floors</h1>);
+  }
+	mouseOverHandler = (d, e) => {
+	    this.setState({
+	      showToolTip: true,
+	      top: `${e.screenY - 10}px`,
+	      left: `${e.screenX + 10}px`,
+	      y: d.y,
+	      x: d.x});
+	  }
 	
 	componentWillUnmount() {
 		window.removeEventListener('resize', this.handleResize);
@@ -365,10 +391,17 @@ export default class ActivityPage extends React.Component{
 
 
 	render(){
+		var stuff = this.state.data;
+    var tooltip = null;
+    if(this.state.showToolTip) {
+      tooltip = this.selected();
+    }
 		return(
 			<div class="container">
+				<h1>{this.state.user.firstName} has made 3089 steps today</h1>
+				{tooltip}
 				<div class="row">
-					<div class="col-sm-12 col-lg-15" ref="block">
+					<div class="col-sm-12 col-lg-12" ref="block">
 						<div class="block" ref={input => {this.myInput = input}}>
 							<btitle>Pedometer</btitle>
 							<link href="../../../css/mui.min.css" rel="stylesheet" type="text/css" media="screen" />
@@ -385,6 +418,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jan2014}
 											/>
 										</Tab>
@@ -398,6 +432,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.feb2014}
 											/>
 										</Tab>
@@ -411,6 +446,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.mar2014}
 											/>
 										</Tab>
@@ -424,6 +460,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.apr2014}
 											/>
 										</Tab>
@@ -437,6 +474,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.may2014}
 											/>
 										</Tab>
@@ -450,6 +488,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jun2014}
 											/>
 										</Tab>
@@ -463,6 +502,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jul2014}
 											/>
 										</Tab>
@@ -476,6 +516,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.aug2014}
 											/>
 										</Tab>
@@ -489,6 +530,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.sep2014}
 											/>
 										</Tab>
@@ -502,6 +544,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.oct2014}
 											/>
 										</Tab>
@@ -515,6 +558,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.nov2014}
 											/>
 										</Tab>
@@ -528,6 +572,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.dec2014}
 											/>
 										</Tab>
@@ -545,6 +590,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jan2015}
 											/>
 										</Tab>
@@ -558,6 +604,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.feb2015}
 											/>
 										</Tab>
@@ -571,6 +618,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.mar2015}
 											/>
 										</Tab>
@@ -584,6 +632,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.apr2015}
 											/>
 										</Tab>
@@ -597,6 +646,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.may2015}
 											/>
 										</Tab>
@@ -610,6 +660,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jun2015}
 											/>
 										</Tab>
@@ -623,6 +674,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jul2015}
 											/>
 										</Tab>
@@ -636,6 +688,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.aug2015}
 											/>
 										</Tab>
@@ -649,6 +702,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.sep2015}
 											/>
 										</Tab>
@@ -662,6 +716,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.oct2015}
 											/>
 										</Tab>
@@ -675,6 +730,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.nov2015}
 											/>
 										</Tab>
@@ -688,6 +744,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.dec2015}
 											/>
 										</Tab>
@@ -705,6 +762,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jan2016}
 											/>
 										</Tab>
@@ -718,6 +776,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.feb2016}
 											/>
 										</Tab>
@@ -731,6 +790,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.mar2016}
 											/>
 										</Tab>
@@ -744,6 +804,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.apr2016}
 											/>
 										</Tab>
@@ -757,6 +818,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.may2016}
 											/>
 										</Tab>
@@ -770,6 +832,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jun2016}
 											/>
 										</Tab>
@@ -783,6 +846,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jul2016}
 											/>
 										</Tab>
@@ -796,6 +860,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.aug2016}
 											/>
 										</Tab>
@@ -809,6 +874,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.sep2016}
 											/>
 										</Tab>
@@ -822,6 +888,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.oct2016}
 											/>
 										</Tab>
@@ -835,6 +902,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.nov2016}
 											/>
 										</Tab>
@@ -848,6 +916,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.dec2016}
 											/>
 										</Tab>
@@ -865,6 +934,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jan2017}
 											/>
 										</Tab>
@@ -878,6 +948,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.feb2017}
 											/>
 										</Tab>
@@ -891,6 +962,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.mar2017}
 											/>
 										</Tab>
@@ -904,6 +976,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.apr2017}
 											/>
 										</Tab>
@@ -917,6 +990,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.may2017}
 											/>
 										</Tab>
@@ -930,6 +1004,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jun2017}
 											/>
 										</Tab>
@@ -943,6 +1018,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.jul2017}
 											/>
 										</Tab>
@@ -956,6 +1032,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.aug2017}
 											/>
 										</Tab>
@@ -969,6 +1046,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.sep2017}
 											/>
 										</Tab>
@@ -982,6 +1060,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.oct2017}
 											/>
 										</Tab>
@@ -995,6 +1074,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.nov2017}
 											/>
 										</Tab>
@@ -1008,6 +1088,7 @@ export default class ActivityPage extends React.Component{
 												width = {this.state.componentWidth - 80}
 												height = {this.state.componentWidth / 2}
 												axisLabels = {{x: "Day", y: "Number of Steps"}}
+												mouseOverHandler={this.mouseOverHandler}
 												data = {this.state.dec2017}
 											/>
 										</Tab>

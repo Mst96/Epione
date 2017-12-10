@@ -55,8 +55,8 @@ export default class HeartRatePage extends React.Component {
         array.shift();
       }
       array.push({"x": data[i].x, "y": data[i].y})
-      // if(data[i].y > 120) this.notify(this.state.user + "Has a Dangerously High Heart Rate");
-      // if(data[i].y < 50) this.notify(this.state.user + "Has a Dangerously Low Heart Rate");
+      // if(data[i].y > 120) this.notify(this.state.user.firstName + "has a Dangerously High Heart Rate");
+      // if(data[i].y < 50) this.notify(this.state.user.firstName + "has a Dangerously Low Heart Rate");
       this.setState({ data: array, current : data[i].y});
       i++;
   }, 3000);
@@ -72,7 +72,8 @@ export default class HeartRatePage extends React.Component {
     return (
       <div>
       <h1>Current Heart Rate: {this.state.current}</h1>;
-      // {tooltip}
+      {tooltip}
+      <button onClick={() => {this.notify(this.state.user.firstName + " has a Dangerously High Heart Rate")}}>Test Notification</button>
       <link href="../../../css/mui.min.css" rel="stylesheet" type="text/css" media="screen" />
       <Tabs justified={true} onChange={this.onChange}>
         <Tab value="Realtime" label="Realtime">
@@ -86,7 +87,7 @@ export default class HeartRatePage extends React.Component {
             width={750}
             height={500}
             grid
-            axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+            axisLabels={{x: 'Minutes', y: 'Heart Rate (BPM)'}}
           data={[this.state.data]}/>
         </Tab>
         <Tab value="Past Day" label="Past Day">
@@ -100,7 +101,7 @@ export default class HeartRatePage extends React.Component {
             width={750}
             height={500}
             grid
-            axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+            axisLabels={{x: 'Hours', y: 'Average Heart Rate (BPM)'}}
           data={[this.state.day]}/>
         </Tab>
         <Tab value="Past Week" label="Past Week">
@@ -114,7 +115,7 @@ export default class HeartRatePage extends React.Component {
             width={750}
             height={500}
             grid
-            axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+            axisLabels={{x: 'Days', y: 'Average Heart Rate (BPM)'}}
           data={[this.state.week]}/>
         </Tab>
         <Tab value="Past Month" label="Past Month">
@@ -128,7 +129,7 @@ export default class HeartRatePage extends React.Component {
             width={750}
             height={500}
             grid
-            axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+            axisLabels={{x: 'Weeks', y: 'Average Heart Rate (BPM)'}}
           data={[this.state.month]}/>
         </Tab>
         <Tab value="Past Year" label="Past Year">
@@ -142,7 +143,7 @@ export default class HeartRatePage extends React.Component {
             width={750}
             height={500}
             grid
-            axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+            axisLabels={{x: 'Months', y: 'Average Heart Rate (BPM)'}}
           data={[this.state.year]}/>
         </Tab>
       </Tabs> 
@@ -151,7 +152,8 @@ export default class HeartRatePage extends React.Component {
     );
   }
   selected(){
-    return (<h1>The x value is {this.state.x} and the y value is {this.state.y}</h1>);
+    console.log("SELECTED" + this.state.y);
+    return (<h1>{this.state.user.firstName}'s Heart Rate at {this.state.x} is {this.state.y}</h1>);
   }
   addZero(i) {
     if(i >= 60){
@@ -181,16 +183,6 @@ export default class HeartRatePage extends React.Component {
   //   this.setState({showToolTip: false});
   // }
 
-
-  createTooltip = () => {
-    console.log(this.state)
-    if (this.state.showToolTip) {
-      return (
-      <div>At {this.state.x}, the heart rate was {this.state.y}</div>
-      );
-    }
-    return false;
-  }
 
 
   notify(message){

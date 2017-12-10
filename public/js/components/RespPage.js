@@ -3,40 +3,60 @@ import { render } from 'react-dom';
 // import { Chart } from 'react-google-charts';
 import {LineChart} from 'react-easy-chart';
 import axios from 'axios';
+import Tabs from 'muicss/lib/react/tabs';
+import Tab from 'muicss/lib/react/tab';
 // import RTChart from 'react-rt-chart';
 // let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
 let data = require('../../../json/respiratory/respiratory-realtime.json');
-
+let day = require('../../../json/respiratory/respiratory-day.json');
+let week = require('../../../json/respiratory/respiratory-week.json');
+let month = require('../../../json/respiratory/respiratory-month.json');
+let year = require('../../../json/respiratory/respiratory-year.json');
+let users = require('../../../json/users.json');
  
 export default class RespPage extends React.Component {
-  constructor(props) {
+   constructor(props) {
     super(props);
-    this.state = {data: [], current: 0};
+    this.state = {data: [],
+      user: {},
+      day: day,
+      week: week,
+      month: month,
+      year: year, 
+      current: 105,
+      showToolTip: false,
+      top: 0,
+      left: 0,
+      x: 0,
+      y: 0
+    };
   }
   componentDidMount() {
-    this.notify();
-    this.notifyLow();
     var rate;
     var array = [];
-    var d = new Date();
+    // var d = new Date();
     for (var i = 0; i <= 5; i++) {
-      var h = this.addZero(d.getUTCHours());
-      var m = this.addZero(d.getUTCMinutes() + i);
-      rate = Math.floor((Math.random() * 10) + 11);
-      array.push({"x": h + ":" + m, "y": rate});
+      // var h = this.addZero(d.getUTCHours());
+      // var m = this.addZero(d.getUTCMinutes() + i);
+      rate = Math.floor((Math.random() * 4) + 13);
+      array.push({"x": i, "y": rate});
     };
-    this.setState({ data: array });
+    var param = this.props.params.user;
+      var user = users.filter(function(user){
+          if(user.firstName === param){
+              return user;
+          }
+      })
+    this.setState({ data: array, user: user[0] });
     var i = 5;
+    {tooltip}
     setInterval(() => {
       if(i > 15){
-        console.log("yo");
-        console.log(array.length);
         array.shift();
-        console.log(array.length);
       }
       array.push({"x": data[i].x, "y": data[i].y})
-      if(data[i].y > 30) this.notify();
-      if(data[i].y < 10) this.notifyLow();
+      // if(data[i].y > 120) this.notify(this.state.user + "Has a Dangerously High Respiratory Rate");
+      // if(data[i].y < 50) this.notify(this.state.user + "Has a Dangerously Low Respiratory Rate");
       this.setState({ data: array, current : data[i].y});
       i++;
   }, 3000);
@@ -45,21 +65,94 @@ export default class RespPage extends React.Component {
   
   render() {
     var stuff = this.state.data;
+    var tooltip = null;
+    if(this.state.showToolTip) {
+      tooltip = this.selected();
+    }
     return (
       <div>
-      <h1>Respiratory Rate: {this.state.current}</h1>;
-      <LineChart
-      xType={'text'}
-      yDomainRange={[4, 30]}
-      axes
-      dataPoints
-      width={750}
-      height={500}
-      grid
-      axisLabels={{x: 'Reading', y: 'Respiratory Rate (breaths per minute)'}}
-    data={[this.state.data]}/>
+      <h1>{this.state.user.firstName}s Current Respiratory Rate: {this.state.current}</h1>;
+      {tooltip}
+      <button onClick={() => {this.notify(this.state.user.firstName + " has a Dangerously HighRespiratory Rate")}}>Test Notification</button>
+      <link href="../../../css/mui.min.css" rel="stylesheet" type="text/css" media="screen" />
+      <Tabs justified={true} onChange={this.onChange}>
+        <Tab value="Realtime" label="Realtime">
+          <LineChart
+            xType={'text'}
+            yDomainRange={[0, 30]}
+            axes
+            dataPoints
+            mouseOverHandler={this.mouseOverHandler}
+            mouseOutHandler={this.mouseOutHandler}
+            width={750}
+            height={500}
+            grid
+            axisLabels={{x: 'Reading', y: 'Respiratory Rate (Breaths per Minute)'}}
+          data={[this.state.data]}/>
+        </Tab>
+        <Tab value="Past Day" label="Past Day">
+          <LineChart
+            xType={'text'}
+            yDomainRange={[0, 30]}
+            axes
+            dataPoints
+            mouseOverHandler={this.mouseOverHandler}
+            mouseOutHandler={this.mouseOutHandler}
+            width={750}
+            height={500}
+            grid
+            axisLabels={{x: 'Reading', y: 'Average Respiratory Rate (Breaths per Minute)'}}
+          data={[this.state.day]}/>
+        </Tab>
+        <Tab value="Past Week" label="Past Week">
+          <LineChart
+            xType={'text'}
+            yDomainRange={[0, 30]}
+            axes
+            dataPoints
+            mouseOverHandler={this.mouseOverHandler}
+            mouseOutHandler={this.mouseOutHandler}
+            width={750}
+            height={500}
+            grid
+            axisLabels={{x: 'Reading', y: 'Average Respiratory Rate (Breaths per Minute)'}}
+          data={[this.state.week]}/>
+        </Tab>
+        <Tab value="Past Month" label="Past Month">
+          <LineChart
+            xType={'text'}
+            yDomainRange={[0, 30]}
+            axes
+            dataPoints
+            mouseOverHandler={this.mouseOverHandler}
+            mouseOutHandler={this.mouseOutHandler}
+            width={750}
+            height={500}
+            grid
+            axisLabels={{x: 'Reading', y: 'Average Respiratory Rate (Breaths per Minute)'}}
+          data={[this.state.month]}/>
+        </Tab>
+        <Tab value="Past Year" label="Past Year">
+          <LineChart
+            xType={'text'}
+            yDomainRange={[0, 30]}
+            axes
+            dataPoints
+            mouseOverHandler={this.mouseOverHandler}
+            mouseOutHandler={this.mouseOutHandler}
+            width={750}
+            height={500}
+            grid
+            axisLabels={{x: 'Reading', y: 'Average Respiratory Rate (Breaths per Minute)'}}
+          data={[this.state.year]}/>
+        </Tab>
+      </Tabs> 
+
             </div>
     );
+  }
+  selected(){
+    return (<h1>At {this.state.x}, {this.state.user.firstName}'s Respiratory Rate is {this.state.y}</h1>);
   }
   addZero(i) {
     if(i >= 60){
@@ -70,19 +163,19 @@ export default class RespPage extends React.Component {
     }
     return i;
   }
+  mouseOverHandler = (d, e) => {
+    this.setState({
+      showToolTip: true,
+      top: `${e.screenY - 10}px`,
+      left: `${e.screenX + 10}px`,
+      y: d.y,
+      x: d.x});
+  }
 
-  notify(){
-    axios.post('/api/notify', {message: "High Respiratory Rate"})
+  notify(message){
+    axios.post('/api/notify', {message: message})
     .then(success =>{
         console.log(success);
         });
   }
-
-  notifyLow(){
-    axios.post('/api/notify', {message: "Low Respiratory Rate"})
-    .then(success =>{
-        console.log(success);
-        });
   }
-
-}
