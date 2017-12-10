@@ -2,6 +2,7 @@ import React from 'react'
 import Tile from "./includes/Tile";
 
 let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
+let users = require('../../../json/users.json');
 
 
 export default class EpioneScale extends React.Component{

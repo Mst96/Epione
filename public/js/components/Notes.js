@@ -54,7 +54,6 @@ export default class Notes extends React.Component {
 
      
     render(){
-        console.log(profile);
         return (
 
           <div class="col-sm-3 col-lg-6">

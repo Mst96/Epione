@@ -3,16 +3,27 @@ import { render } from 'react-dom';
 // import { Chart } from 'react-google-charts';
 import {LineChart} from 'react-easy-chart';
 import axios from 'axios';
+import Tabs from 'muicss/lib/react/tabs';
+import Tab from 'muicss/lib/react/tab';
 // import RTChart from 'react-rt-chart';
 // let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
 let data = require('../../../json/heartrate/heartrate-realtime.json');
+let day = require('../../../json/heartrate/heartrate-day.json');
+let week = require('../../../json/heartrate/heartrate-week.json');
+let month = require('../../../json/heartrate/heartrate-month.json');
+let year = require('../../../json/heartrate/heartrate-year.json');
+let users = require('../../../json/users.json');
 
  
 export default class HeartRatePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {data: [],
-      user: "", 
+      user: {},
+      day: day,
+      week: week,
+      month: month,
+      year: year, 
       current: 0,
       showToolTip: false,
       top: 0,
@@ -24,12 +35,12 @@ export default class HeartRatePage extends React.Component {
   componentDidMount() {
     var rate;
     var array = [];
-    var d = new Date();
+    // var d = new Date();
     for (var i = 0; i <= 5; i++) {
-      var h = this.addZero(d.getUTCHours());
-      var m = this.addZero(d.getUTCMinutes() + i);
+      // var h = this.addZero(d.getUTCHours());
+      // var m = this.addZero(d.getUTCMinutes() + i);
       rate = Math.floor((Math.random() * 20) + 55);
-      array.push({"x": h + ":" + m, "y": rate});
+      array.push({"x": i, "y": rate});
     };
     var param = this.props.params.user;
       var user = users.filter(function(user){
@@ -44,8 +55,8 @@ export default class HeartRatePage extends React.Component {
         array.shift();
       }
       array.push({"x": data[i].x, "y": data[i].y})
-      if(data[i].y > 120) this.notify(this.state.user + "Has a Dangerously High Heart Rate");
-      if(data[i].y < 50) this.notify(this.state.user + "Has a Dangerously Low Heart Rate");
+      // if(data[i].y > 120) this.notify(this.state.user + "Has a Dangerously High Heart Rate");
+      // if(data[i].y < 50) this.notify(this.state.user + "Has a Dangerously Low Heart Rate");
       this.setState({ data: array, current : data[i].y});
       i++;
   }, 3000);
@@ -62,24 +73,84 @@ export default class HeartRatePage extends React.Component {
       <div>
       <h1>Current Heart Rate: {this.state.current}</h1>;
       // {tooltip}
+      <link href="../../../css/mui.min.css" rel="stylesheet" type="text/css" media="screen" />
+      <Tabs justified={true} onChange={this.onChange}>
+        <Tab value="Realtime" label="Realtime">
+          <LineChart
+            xType={'text'}
+            yDomainRange={[40, 140]}
+            axes
+            dataPoints
+            mouseOverHandler={this.mouseOverHandler}
+            mouseOutHandler={this.mouseOutHandler}
+            width={750}
+            height={500}
+            grid
+            axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+          data={[this.state.data]}/>
+        </Tab>
+        <Tab value="Past Day" label="Past Day">
+          <LineChart
+            xType={'text'}
+            yDomainRange={[40, 140]}
+            axes
+            dataPoints
+            mouseOverHandler={this.mouseOverHandler}
+            mouseOutHandler={this.mouseOutHandler}
+            width={750}
+            height={500}
+            grid
+            axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+          data={[this.state.day]}/>
+        </Tab>
+        <Tab value="Past Week" label="Past Week">
+          <LineChart
+            xType={'text'}
+            yDomainRange={[40, 140]}
+            axes
+            dataPoints
+            mouseOverHandler={this.mouseOverHandler}
+            mouseOutHandler={this.mouseOutHandler}
+            width={750}
+            height={500}
+            grid
+            axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+          data={[this.state.week]}/>
+        </Tab>
+        <Tab value="Past Month" label="Past Month">
+          <LineChart
+            xType={'text'}
+            yDomainRange={[40, 140]}
+            axes
+            dataPoints
+            mouseOverHandler={this.mouseOverHandler}
+            mouseOutHandler={this.mouseOutHandler}
+            width={750}
+            height={500}
+            grid
+            axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+          data={[this.state.month]}/>
+        </Tab>
+        <Tab value="Past Year" label="Past Year">
+          <LineChart
+            xType={'text'}
+            yDomainRange={[40, 140]}
+            axes
+            dataPoints
+            mouseOverHandler={this.mouseOverHandler}
+            mouseOutHandler={this.mouseOutHandler}
+            width={750}
+            height={500}
+            grid
+            axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
+          data={[this.state.year]}/>
+        </Tab>
+      </Tabs> 
 
-      <LineChart
-      xType={'text'}
-      yDomainRange={[40, 140]}
-      axes
-      dataPoints
-      mouseOverHandler={this.mouseOverHandler}
-      mouseOutHandler={this.mouseOutHandler}
-      width={750}
-      height={500}
-      grid
-      axisLabels={{x: 'Reading', y: 'Heart Rate (BPM)'}}
-    data={[this.state.data]}/>
             </div>
     );
   }
   selected(){
-    console.log("SELECTED");
     return (<h1>The x value is {this.state.x} and the y value is {this.state.y}</h1>);
   }
   addZero(i) {
@@ -92,7 +163,6 @@ export default class HeartRatePage extends React.Component {
     return i;
   }
   mouseOverHandler = (d, e) => {
-    console.log(e.screenX)
     this.setState({
       showToolTip: true,
       top: `${e.screenY - 10}px`,

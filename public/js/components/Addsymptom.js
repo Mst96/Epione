@@ -3,13 +3,25 @@ import Tile from "../components/includes/Tile";
 import { Link } from "react-router";
 
 import Fetch from 'react-fetch';
-let profile = require('../../profile-test.json');
+import Tile2 from "../components/includes/Tile2";
+let users = require('../../../json/users.json');
 
 export default class Addsymptom extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {user: {}};
+    }
+    componentDidMount() {
+        var param = this.props.params.user;
+        var user = users.filter(function(user){
+            if(user.firstName === param){
+                console.log("YOOO MATCH");
+                return user;
+            }
+        })
+        this.setState({user: user[0]});
+    }
 render(){
-    console.log(profile);
-
-    
 return(
             <div class="container">
     <div class="row">
@@ -466,17 +478,7 @@ return(
                 </div>
             </div>
 
-            <div class="mt-2 col-sm-12 col-lg-4">
-                <div class="block">
-                <center>
-                    <Link to={'/Patient/dashboard'}>  <btitle>Back to Dashboard</btitle></Link>
-                    </center>
-                    <hr/>
-                    <div class="text-center">
-                        <i class="fa fa-cogs fa-3x" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
+            <Tile2 linkTo={"/" + this.state.user.firstName + "/dashboard"} image="https://png.icons8.com/ios/2x/settings.png" name='Back to Dashboard'/>
 
 
                 </div>

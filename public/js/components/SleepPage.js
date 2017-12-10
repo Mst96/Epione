@@ -5,7 +5,7 @@ import {LineChart} from 'react-easy-chart';
 import axios from 'axios';
 // import RTChart from 'react-rt-chart';
 // let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
-let data = require('../../../sleep.json')["data"];
+let data = require('../../../json/sleep.json')["data"];
 
  
 export default class SleepPage extends React.Component {

@@ -6,10 +6,24 @@ import Symptoms from "../components/includes/Symptoms";
 import Fetch from 'react-fetch';
 import { Link } from "react-router";
 let profile = require('../../profile-test.json');
+let users = require('../../../json/users.json');
 
 export default class Usersettings extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {user: {}};
+    }
+    componentDidMount() {
+        var param = this.props.params.user;
+        var user = users.filter(function(user){
+            if(user.firstName === param){
+                console.log("YOOO MATCH");
+                return user;
+            }
+        })
+        this.setState({user: user[0]});
+    }
 render(){
-    console.log(profile);
 return(
             <div class="container">
     <div class="row">
@@ -23,7 +37,7 @@ return(
                     <div class="text-center">
                     <p>Goal: 5000 Steps</p>
                     <p>Achieved: 6000 Steps</p>
-                    <p>Well Done, {profile.user.displayName}, you have completed your goal for today!   </p>
+                    <p>Well Done, {this.state.user.firstName}, you have completed your goal for today!   </p>
                         
                     </div>
                 </div>
@@ -36,7 +50,7 @@ return(
                     <div class="text-center">
                     <p>Goal: 10000 Steps</p>
                     <p>Achieved: 9500 Steps</p>
-                    <p>So close, {profile.user.displayName}! Today you reached 9500 steps, good effort! Why not set the same goal again tomorrow and see if you can beat it?  </p>
+                    <p>So close, {this.state.user.firstName}! Today you reached 9500 steps, good effort! Why not set the same goal again tomorrow and see if you can beat it?  </p>
                     </div>
                 </div>
             </div>
@@ -48,7 +62,7 @@ return(
                     <div class="text-center">
                     <p>Goal: 1500 Steps</p>
                     <p>Achieved: 7000 Steps</p>
-                    <p>Well Done, {profile.user.displayName}, you have completed your goal for today! Why not challenge yourself to acheive 3 goals in a row?  </p>
+                    <p>Well Done, {this.state.user.firstName}, you have completed your goal for today! Why not challenge yourself to acheive 3 goals in a row?  </p>
                     </div>
                 </div>
             </div>
@@ -60,7 +74,7 @@ return(
                     <div class="text-center">
                     <p>Goal: 5000 Steps</p>
                     <p>Achieved: 6000 Steps</p>
-                    <p>Well Done, {profile.user.displayName}, you have completed your goal for today!   </p>
+                    <p>Well Done, {this.state.user.firstName}, you have completed your goal for today!   </p>
                     </div>
                 </div>
             </div>
@@ -72,7 +86,7 @@ return(
                     <div class="text-center">
                     <p>Goal: 8500 Steps</p>
                     <p>Achieved: 8500 Steps</p>
-                    <p>Well Done, {profile.user.displayName}, you have completed your goal for today! You have completed 3 goals in a row! Congratulations. Remember to keep it up! </p>
+                    <p>Well Done, {this.state.user.firstName}, you have completed your goal for today! You have completed 3 goals in a row! Congratulations. Remember to keep it up! </p>
                     </div>
                 </div>
             </div>
@@ -84,7 +98,7 @@ return(
                     <div class="text-center">
                     <p>Goal: 8000 Steps</p>
                     <p>Achieved: 6000 Steps</p>
-                    <p>Nearly there, {profile.user.displayName}, you were just under your goal for today. Try and complete your goal tomorrow instead! </p>
+                    <p>Nearly there, {this.state.user.firstName}, you were just under your goal for today. Try and complete your goal tomorrow instead! </p>
                     </div>
                 </div>
             </div>
@@ -96,7 +110,7 @@ return(
                     <div class="text-center">
                     <p>Goal: 8500 Steps</p>
                     <p>Achieved: 8500 Steps</p>
-                    <p>Well Done, {profile.user.displayName}, you have completed your goal for today!  </p>
+                    <p>Well Done, {this.state.user.firstName}, you have completed your goal for today!  </p>
                     </div>
                 </div>
             </div>

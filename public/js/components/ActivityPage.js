@@ -5,7 +5,6 @@ import {BarChart} from 'react-easy-chart';
 import Tabs from 'muicss/lib/react/tabs';
 import Tab from 'muicss/lib/react/tab';
 
-let profile = require('../../profile-test.json');
 
 let jan2014 = require('../../../json_files/steps/january2014Steps.json')["step-counter"]["dataset"];
 let feb2014 = require('../../../json_files/steps/february2014Steps.json')["step-counter"]["dataset"];

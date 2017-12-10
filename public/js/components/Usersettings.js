@@ -5,7 +5,7 @@ import Allergies from "../components/includes/Allergies";
 import Symptoms from "../components/includes/Symptoms";
 import Fetch from 'react-fetch';
 import { Link } from "react-router";
-let profile = require('../../profile-test.json');
+let users = require('../../../json/users.json');
 
 export default class Usersettings extends React.Component{
     constructor(props) {

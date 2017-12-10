@@ -3,7 +3,6 @@ import Tile from "../components/includes/Tile";
 import HeartRate from "../components/includes/HeartRate";
 import Fetch from 'react-fetch';
 import { Link } from "react-router";
-let profile = require('../../profile-test.json');
 let users = require('../../../users.json');
 
 let steps = require('../../../json/steps.json')["step-counter"]["dataset"][0]["steps"];

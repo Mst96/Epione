@@ -6,9 +6,9 @@ import Fetch from 'react-fetch';
 import { Link } from "react-router";
 
 let profile = require('../../profile-test.json');
-let users = require('../../../users.json');
+let users = require('../../../json/users.json');
 
-export default class Dashboard extends React.Component{
+export default class WelcomePage extends React.Component{
     constructor(props) {
         super(props);
         this.state = {user: {}};

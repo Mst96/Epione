@@ -8,7 +8,7 @@ export default class Symptoms extends React.Component{
         console.log(this.props.user);
         return(
 
-                <div class="col-sm-3 col-lg-6">
+                <div class="col-xs-6">
             <div class="block">
                 <btitle>Symptoms List</btitle>
                 <hr/>

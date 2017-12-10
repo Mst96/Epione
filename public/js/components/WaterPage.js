@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 // import { Chart } from 'react-google-charts';
 import {LineChart} from 'react-easy-chart';
 // import RTChart from 'react-rt-chart';
-let data = require('../../../test.json')["activities-heart-intraday"]["dataset"];
+let data = require('../../../json/bodywater.json');
 
  
 export default class HeartRatePage extends React.Component {
