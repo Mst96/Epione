@@ -133,19 +133,7 @@ export default class FloorPage extends React.Component {
     );
   }
   selected(){
-    if( this.state.x == 1 || this.state.x == 21 || this.state.x == 31  )
-    {
-      return (<h1>On the {this.state.x}st, {this.state.user.firstName} climbed {this.state.y} floors</h1>);
-    } else if( this.state.x == 2 || this.state.x == 22 )
-    {
-      return (<h1>On the {this.state.x}nd, {this.state.user.firstName} climbed {this.state.y} floors</h1>);
-    } else if( this.state.x == 3 || this.state.x == 23 )
-    {
-      return (<h1>On the {this.state.x}rd, {this.state.user.firstName} climbed {this.state.y} floors</h1>);
-    } else
-    {
-      return (<h1>On the {this.state.x}th, {this.state.user.firstName} climbed {this.state.y} floors</h1>);
-    }
+    return (<h1>At {this.state.x}, {this.state.user.firstName} climbed {this.state.y} floors</h1>);
     
     }
 
