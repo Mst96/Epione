@@ -2,7 +2,7 @@
 	"distance": {
 		"dataset": [
 			{
-				"time": "00:01",
+				"time": "00:00",
 				"distance": 0.0
 			},
 			{
@@ -63,139 +63,139 @@
 			},
 			{
 				"time": "07:30",
-				"distance": 64.77
+				"distance": 550.93
 			},
 			{
 				"time": "08:00",
-				"distance": 383.286
+				"distance": 986.03
 			},
 			{
 				"time": "08:30",
-				"distance": 727.71
+				"distance": 1056.89
 			},
 			{
 				"time": "09:00",
-				"distance": 1211.58
+				"distance": 1511.81
 			},
 			{
 				"time": "09:30",
-				"distance": 1262.634
+				"distance": 1943.1
 			},
 			{
 				"time": "10:00",
-				"distance": 1321.308
+				"distance": 2180.08
 			},
 			{
 				"time": "10:30",
-				"distance": 1922.526
+				"distance": 2545.84
 			},
 			{
 				"time": "11:00",
-				"distance": 1939.29
+				"distance": 2685.29
 			},
 			{
 				"time": "11:30",
-				"distance": 2423.922
+				"distance": 2811.78
 			},
 			{
 				"time": "12:00",
-				"distance": 2770.632
+				"distance": 2976.37
 			},
 			{
 				"time": "12:30",
-				"distance": 3060.954
+				"distance": 3255.26
 			},
 			{
 				"time": "13:00",
-				"distance": 3437.382
+				"distance": 3589.78
 			},
 			{
 				"time": "13:30",
-				"distance": 3784.092
+				"distance": 3646.93
 			},
 			{
 				"time": "14:00",
-				"distance": 4215.384
+				"distance": 3813.05
 			},
 			{
 				"time": "14:30",
-				"distance": 4478.274
+				"distance": 4233.67
 			},
 			{
 				"time": "15:00",
-				"distance": 4737.354
+				"distance": 4529.33
 			},
 			{
 				"time": "15:30",
-				"distance": 5147.31
+				"distance": 4761.74
 			},
 			{
 				"time": "16:00",
-				"distance": 5615.178
+				"distance": 4796.79
 			},
 			{
 				"time": "16:30",
-				"distance": 5885.688
+				"distance": 4951.48
 			},
 			{
 				"time": "17:00",
-				"distance": 6119.622
+				"distance": 5222.75
 			},
 			{
 				"time": "17:30",
-				"distance": 6261.354
+				"distance": 5622.04
 			},
 			{
 				"time": "18:00",
-				"distance": 6720.078
+				"distance": 5668.52
 			},
 			{
 				"time": "18:30",
-				"distance": 7139.9400000000005
+				"distance": 5975.6
 			},
 			{
 				"time": "19:00",
-				"distance": 7415.784
+				"distance": 6712.46
 			},
 			{
 				"time": "19:30",
-				"distance": 7647.432
+				"distance": 6998.97
 			},
 			{
 				"time": "20:00",
-				"distance": 8151.1140000000005
+				"distance": 7643.62
 			},
 			{
 				"time": "20:30",
-				"distance": 8330.946
+				"distance": 7944.61
 			},
 			{
 				"time": "21:00",
-				"distance": 8532.876
+				"distance": 8314.94
 			},
 			{
 				"time": "21:30",
-				"distance": 9038.082
+				"distance": 8757.67
 			},
 			{
 				"time": "22:00",
-				"distance": 9157.716
+				"distance": 8860.54
 			},
 			{
 				"time": "22:30",
-				"distance": 9319.26
+				"distance": 8933.69
 			},
 			{
 				"time": "23:00",
-				"distance": 9648.444
+				"distance": 9039.61
 			},
 			{
 				"time": "23:30",
-				"distance": 9988.296
+				"distance": 9928.1
 			},
 			{
 				"time": "23:59",
-				"distance": 10102.596
+				"distance": 10102.6
 			}
 		]
 	}
