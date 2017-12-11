@@ -1093,10 +1093,11 @@ export default class ActivityPage extends React.Component{
 									</Tabs>
 								</Tab>
 							</Tabs>
+							{tooltip}
 						</div>
 					</div>
 				</div>
-				{tooltip}
+				
 			</div>
 		);
 	}

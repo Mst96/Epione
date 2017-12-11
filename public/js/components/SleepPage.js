@@ -115,10 +115,10 @@ export default class SleepPage extends React.Component {
 				            data={[this.state.year]}/>
 				          </Tab>
 				        </Tabs>
+				        {tooltip}
 			        </div>
 				</div>
 			</div>
-			{tooltip}
       </div>
     );
   }

@@ -141,10 +141,11 @@ export default class DistancePage extends React.Component {
                     data={this.state.dataYear}/>
                 </Tab>
               </Tabs>
+              {tooltip}
             </div>
           </div>
         </div>
-        {tooltip}
+        
       </div> 
     );
   }

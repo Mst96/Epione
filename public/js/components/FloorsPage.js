@@ -125,10 +125,10 @@ export default class FloorPage extends React.Component {
             data={this.state.year}/>
             </Tab>
         </Tabs>
+            {tooltip}
             </div>
           </div>
         </div>
-        {tooltip}
       </div>
     );
   }
