@@ -25,9 +25,13 @@ export default class SleepPage extends React.Component {
       top: 0,
       left: 0,
       x: 0,
-      y: 0
+      y: 0,
+      componentWidth: 300,
     };
+
+    this.handleResize = this.handleResize.bind(this);
   }
+
   componentDidMount() {
         var param = this.props.params.user;
         var user = users.filter(function(user){
@@ -37,7 +41,22 @@ export default class SleepPage extends React.Component {
             }
         })
         this.setState({user: user[0]});
+
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
     }
+
+    componentWillUnmount() {
+		window.removeEventListener('resize', this.handleResize);
+	}
+
+    handleResize() {
+		this.setState({
+			windowWidth: window.innerWidth - 100,
+			componentWidth: this.myInput.offsetWidth
+		});
+	}
+
   render() {
     var stuff = this.state.data;
     var tooltip = null;
@@ -45,56 +64,66 @@ export default class SleepPage extends React.Component {
       tooltip = this.selected();
     }
     return (
-      <div>
-        <h1>{this.state.user.firstName} slept for {this.state.current} hours last night</h1>;
-        {tooltip}
-        <link href="../../../css/mui.min.css" rel="stylesheet" type="text/css" media="screen" />
-        <Tabs justified={true} onChange={this.onChange}>
-          <Tab value="Past Week" label="Past Week">
-            <LineChart
-              xType={'text'}
-              yDomainRange={[0, 15]}
-              axes
-              dataPoints
-              mouseOverHandler={this.mouseOverHandler}
-              width={750}
-              height={500}
-              grid
-              axisLabels={{x: 'Reading', y: 'Hours of Sleep'}}
-            data={[this.state.week]}/>
-          </Tab>
-          <Tab value="Past Month" label="Past Month">
-            <LineChart
-              xType={'text'}
-              yDomainRange={[0, 15]}
-              axes
-              dataPoints
-              mouseOverHandler={this.mouseOverHandler}
-              width={750}
-              height={500}
-              grid
-              axisLabels={{x: 'Reading', y: 'Hours of Sleep'}}
-            data={[this.state.month]}/>
-          </Tab>
-          <Tab value="Past Year" label="Past Year">
-            <LineChart
-              xType={'text'}
-              yDomainRange={[0, 15]}
-              axes
-              dataPoints
-              mouseOverHandler={this.mouseOverHandler}
-              width={750}
-              height={500}
-              grid
-              axisLabels={{x: 'Reading', y: 'Average hours of Sleep'}}
-            data={[this.state.year]}/>
-          </Tab>
-        </Tabs> 
+    	<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-lg-12" ref="block">
+					<div class="block" ref={input => {this.myInput = input}}>
+						<btitle>Sleep</btitle>
+				        <h1>{this.state.user.firstName} slept for {this.state.current} hours last night</h1>;
+				        <link href="../../../css/mui.min.css" rel="stylesheet" type="text/css" media="screen" />
+				        <Tabs justified={true} onChange={this.onChange}>
+				          <Tab value="Past Week" label="Past Week">
+				            <LineChart
+				              xType={'text'}
+				              yDomainRange={[0, 15]}
+				              axes
+				              dataPoints
+				              lineColors={['#5DADE2']}
+				              mouseOverHandler={this.mouseOverHandler}
+							  width = {this.state.componentWidth - 100}
+				              height={this.state.componentWidth / 2}
+				              grid
+				              axisLabels={{x: 'Day', y: 'Hours of Sleep'}}
+				            data={[this.state.week]}/>
+				          </Tab>
+				          <Tab value="Past Month" label="Past Month">
+				            <LineChart
+				              xType={'text'}
+				              yDomainRange={[0, 15]}
+				              axes
+				              dataPoints
+				              lineColors={['#5DADE2']}
+				              mouseOverHandler={this.mouseOverHandler}
+							  width = {this.state.componentWidth - 100}
+				              height={this.state.componentWidth / 2}
+				              grid
+				              axisLabels={{x: 'Day', y: 'Hours of Sleep'}}
+				            data={[this.state.month]}/>
+				          </Tab>
+				          <Tab value="Past Year" label="Past Year">
+				            <LineChart
+				              xType={'text'}
+				              yDomainRange={[0, 15]}
+				              axes
+				              dataPoints
+				              lineColors={['#5DADE2']}
+				              mouseOverHandler={this.mouseOverHandler}
+							  width = {this.state.componentWidth - 100}
+				              height={this.state.componentWidth / 2}
+				              grid
+				              axisLabels={{x: 'Month', y: 'Average hours of Sleep'}}
+				            data={[this.state.year]}/>
+				          </Tab>
+				        </Tabs>
+				        {tooltip}
+			        </div>
+				</div>
+			</div>
       </div>
     );
   }
   selected(){
-    return (<h1>At {this.state.x}, {this.state.user.firstName} slept for {this.state.y} hours</h1>);
+  	return (<h1>At {this.state.x}, {this.state.user.firstName} slept for {this.state.y} hours</h1>);
   }
   addZero(i) {
     if(i >= 60){

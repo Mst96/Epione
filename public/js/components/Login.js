@@ -8,7 +8,7 @@ export default class Login extends React.Component{
 render(){
 return(
        <div class="container">
-            <div>Hi, log into your profile: </div>
+            <h1>Hi, log into your profile: </h1>
             <Tile4 linkTo={"/Barry/welcome"} image="https://static0.fitbit.com/images/profile/defaultProfile_100_male.png" name='Test User'/>
 
 

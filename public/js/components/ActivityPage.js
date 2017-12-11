@@ -315,11 +315,11 @@ export default class ActivityPage extends React.Component{
 			componentWidth: 300,
 			selectedYearIndex: 3,
 			selectedMonthIndex: 11,
-      showToolTip: false,
-      top: 0,
-      left: 0,
-      x: 0,
-      y: 0,
+		    showToolTip: false,
+		    top: 0,
+		    left: 0,
+		    x: 0,
+		    y: 0,
 			jan2014: array, feb2014: array2, mar2014: array3, apr2014: array4, may2014: array5, jun2014: array6, jul2014: array45, aug2014: array7, sep2014: array8, oct2014: array9, nov2014: array10, dec2014: array11,
 			jan2015: array12, feb2015: array13, mar2015: array14, apr2015: array15, may2015: array16, jun2015: array17, jul2015: array46, aug2015: array18, sep2015: array19, oct2015: array20, nov2015: array21, dec2015: array22,
 			jan2016: array23, feb2016: array24, mar2016: array25, apr2016: array26, may2016: array27, jun2016: array28, jul2016: array47, aug2016: array29, sep2016: array30, oct2016: array31, nov2016: array32, dec2016: array33,
@@ -348,8 +348,8 @@ export default class ActivityPage extends React.Component{
 	}
 
 	selected(){
-    return (<h1>At {this.state.x}, {this.state.user.firstName} climbed {this.state.y} floors</h1>);
-  }
+		return (<h1>At {this.state.x}, {this.state.user.firstName} took {this.state.y} steps</h1>);    
+  	}
 	mouseOverHandler = (d, e) => {
 	    this.setState({
 	      showToolTip: true,
@@ -398,12 +398,10 @@ export default class ActivityPage extends React.Component{
     }
 		return(
 			<div class="container">
-				<h1>{this.state.user.firstName} has made 3089 steps today</h1>
-				{tooltip}
 				<div class="row">
 					<div class="col-sm-12 col-lg-12" ref="block">
 						<div class="block" ref={input => {this.myInput = input}}>
-							<btitle>Pedometer</btitle>
+							<btitle>Steps Taken</btitle>
 							<link href="../../../css/mui.min.css" rel="stylesheet" type="text/css" media="screen" />
 							<Tabs justified={true} onChange={this.onChange}>
 								<Tab value="2014" label="2014">
@@ -1095,9 +1093,11 @@ export default class ActivityPage extends React.Component{
 									</Tabs>
 								</Tab>
 							</Tabs>
+							{tooltip}
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		);
 	}
